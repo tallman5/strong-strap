@@ -1,0 +1,19 @@
+{
+  "name": "strong-strap",
+  "version": "0.1.0",
+  "description": "Strongly typed styles, minimal dependency on CSS",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/tallman5/strong-strap.git"
+  },
+  "author": "tallman5",
+  "license": "GNU",
+  "bugs": {
+    "url": "https://github.com/tallman5/strong-strap/issues"
+  },
+  "homepage": "https://github.com/tallman5/strong-strap#readme"
+}
