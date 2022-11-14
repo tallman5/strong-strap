@@ -2,9 +2,13 @@
   "name": "strong-strap",
   "version": "0.1.0",
   "description": "Strongly typed styles, minimal dependency on CSS",
-  "main": "index.js",
+  "main": "src/index.ts",
+  "types": "lib/index.d.ts",
+  "files": [
+    "lib"
+  ],
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "prepublish": "tsc"
   },
   "repository": {
     "type": "git",
@@ -15,5 +19,15 @@
   "bugs": {
     "url": "https://github.com/tallman5/strong-strap/issues"
   },
-  "homepage": "https://github.com/tallman5/strong-strap#readme"
+  "homepage": "https://github.com/tallman5/strong-strap#readme",
+  "dependencies": {
+    "@react-spring/web": "^9.5.5",
+    "react": "^18.2.0",
+    "react-dom": "^18.2.0"
+  },
+  "devDependencies": {
+    "@types/react": "^18.0.25",
+    "@types/react-dom": "^18.0.8",
+    "typescript": "^4.8.4"
+  }
 }
