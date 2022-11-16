@@ -5,22 +5,66 @@ const config: GatsbyConfig = {
     title: `strong-strap test site`,
     siteUrl: `https://www.yourdomain.tld`
   },
-  // More easily incorporate content into your pages through automatic TypeScript type generation and better GraphQL IntelliSense.
-  // If you use VSCode you can also use the GraphQL plugin
-  // Learn more at: https://gatsby.dev/graphql-typegen
   graphqlTypegen: true,
   plugins: [
     "gatsby-plugin-image",
-    "gatsby-plugin-sitemap",
+    {
+      resolve: "gatsby-plugin-sitemap",
+      options: {
+        excludes: [
+          '/scratch/',
+          '/posts/theme-testing/',
+          '/posts/mdx-testing/',
+        ]
+      }
+    },
     {
       resolve: 'gatsby-plugin-manifest',
       options: {
-        "icon": "src/images/icon.png"
+        "icon": "src/images/icon.png",
       }
     },
-    "gatsby-plugin-mdx",
-    "gatsby-plugin-sharp",
+    {
+      resolve: 'gatsby-plugin-mdx',
+      options: {
+        gatsbyRemarkPlugins: [
+          {
+            resolve: 'gatsby-remark-images',
+            options: {
+              maxWidth: 1200,
+            }
+          },
+        ],
+        mdxOptions: {
+          remarkPlugins: [
+            [require('gatsby-remark-vscode').remarkPlugin, {
+              // theme: `Cobalt2`,
+              // extensions: [`theme-cobalt2`],
+            }]
+          ]
+        }
+      }
+    },
+    {
+      resolve: "gatsby-plugin-sharp",
+      options: {
+        defaults: {
+          transformOptions: {
+            fit: "cover",
+            cropFocus: "centre",
+          }
+        }
+      }
+    },
     "gatsby-transformer-sharp",
+    {
+      resolve: 'gatsby-source-filesystem',
+      options: {
+        "name": "images",
+        "path": "./src/images/"
+      },
+      __key: "images"
+    },
     {
       resolve: 'gatsby-source-filesystem',
       options: {
@@ -36,7 +80,22 @@ const config: GatsbyConfig = {
         "path": "./src/pages/"
       },
       __key: "pages"
-    }
+    },
+    {
+      resolve: "gatsby-source-filesystem",
+      options: {
+        name: `posts`,
+        path: `${__dirname}/posts`,
+      }
+    },
+    {
+      resolve: `gatsby-plugin-disqus`,
+      options: {
+        shortname: `mcgurkin`
+      }
+    },
+    "gatsby-plugin-offline",
+    "gatsby-plugin-sitemap",
   ]
 };
 

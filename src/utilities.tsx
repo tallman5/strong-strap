@@ -10,14 +10,22 @@ export const masonryQueries = [
     '(min-width: 1650px)', '(min-width: 1375px)', '(min-width: 1100px)', '(min-width: 825px)', '(min-width: 550px)'
 ]
 
-export function useColumnSizes(size: Size, span: number) {
+export enum Size {
+    sm, md, lg, xl, xxl, fluid
+}
+
+export enum UiFunction {
+    None, Primary, Secondary, Success, Danger, Warning, Info, Light, Dark, Link
+}
+
+export function useColumnSizes(size: Size, colSpan: number) {
     const collapsedStyle: CSSProperties = {
         flexShrink: 0
     }
 
     const expandedStyle: CSSProperties = {
-        flex: (span > 0) ? '0 0 auto' : '1 0 auto',
-        width: (span > 0) ? (span / 12) * 100 + '%' : 'auto',
+        flex: (colSpan > 0) ? '0 0 auto' : '1 0 auto',
+        width: (colSpan > 0) ? (colSpan / 12) * 100 + '%' : 'auto',
     }
 
     switch (size) {
@@ -96,8 +104,3 @@ export function useWindowSize() {
 
     return windowSize;
 }
-
-export enum Size {
-    sm, md, lg, xl, xxl, fluid
-}
-
