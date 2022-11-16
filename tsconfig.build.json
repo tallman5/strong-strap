@@ -13,6 +13,5 @@
     // Only include TypeScript files that should be built
     "include": [
         "src",
-        "src/strong-strap.css",
     ]
 }

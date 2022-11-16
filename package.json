@@ -6,13 +6,16 @@
   "files": [
     "/dist",
     "!/dist/**/*.js.map",
-    "!/dist/**/*.tsbuildinfo"
+    "!/dist/**/*.tsbuildinfo",
+    "!/node_modules/",
+    "!/source/",
+    "!/test/",
+    "!/test-site/"
   ],
   "scripts": {
     "build": "npm-run-all build:*",
     "build:ts": "tsc --project tsconfig.build.json",
-    "build:scss": "node-sass --output-style compressed -o dist/css src/scss",
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "build:scss": "node-sass --output-style compressed -o dist/css src/scss"
   },
   "repository": {
     "type": "git",
