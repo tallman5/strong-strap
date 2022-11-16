@@ -3,6 +3,7 @@ import { CSSProperties } from "react";
 
 export const bshamburgericon = `url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 30 30'%3e%3cpath stroke='rgba%280, 0, 0, 0.55%29' stroke-linecap='round' stroke-miterlimit='10' stroke-width='2' d='M4 7h22M4 15h22M4 23h22'/%3e%3c/svg%3e")`
 
+
 export const AspectRatioContainer: CSSProperties = {
     position: 'relative',
     // paddingTop: '93%',
@@ -15,6 +16,7 @@ export const AspectRatioItem: CSSProperties = {
     width: '100%'
 }
 
+
 export const Backdrop: CSSProperties = {
     alignItems: 'center',
     backgroundColor: 'rgba(0, 0, 0, 0.5)',
@@ -26,6 +28,7 @@ export const Backdrop: CSSProperties = {
     top: 0,
     width: '100vw',
 }
+
 
 export const Btn: CSSProperties = {
     backgroundColor: 'transparent',
@@ -105,6 +108,7 @@ export const BtnLightHover: CSSProperties = {
     borderColor: '#f9fafb',
 }
 
+
 export const Card: CSSProperties = {
     position: 'relative',
     display: 'flex',
@@ -144,6 +148,7 @@ export const CardTitle: CSSProperties = {
     fontSize: '1.25rem',
     marginBottom: '.5rem',
 }
+
 
 export const CloseButton: CSSProperties = {
     background: `transparent url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 16 16' fill='%23000'%3e%3cpath d='M.293.293a1 1 0 011.414 0L8 6.586 14.293.293a1 1 0 111.414 1.414L9.414 8l6.293 6.293a1 1 0 01-1.414 1.414L8 9.414l-6.293 6.293a1 1 0 01-1.414-1.414L6.586 8 .293 1.707a1 1 0 010-1.414z'/%3e%3c/svg%3e") center/1em auto no-repeat`,
@@ -229,7 +234,6 @@ export const FormCheckInputFocus = {
     outline: 0,
     boxShadow: '0 0 0 .25rem rgba(13,110,253,.25)',
 }
-
 export const FormControl: CSSProperties = {
     display: 'block',
     width: '100%',
@@ -255,6 +259,8 @@ export const FormControlFocus: CSSProperties = {
     outline: 0,
     boxShadow: '0 0 0 .25rem rgba(13,110,253,.25)',
 }
+
+
 export const FormFloating: CSSProperties = {
     position: 'relative',
 }
@@ -265,7 +271,6 @@ export const FormFloatingFormControl: CSSProperties = {
     paddingTop: '1.625rem',
     paddingBottom: '.625rem',
 }
-
 export const FloatingLabel: CSSProperties = {
     border: '1px solid transparent',
     color: '#777',
