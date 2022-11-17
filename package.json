@@ -1,43 +1,63 @@
 {
   "name": "@tallman/strong-strap",
-  "version": "0.0.3",
+  "version": "0.0.5",
   "description": "**This is still a work in progress**",
   "main": "dist/index.js",
   "files": [
     "/dist",
     "!/dist/**/*.js.map",
-    "!/dist/**/*.tsbuildinfo",
-    "!/node_modules/",
-    "!/source/",
-    "!/test/",
-    "!/test-site/"
+    "!/dist/**/*.tsbuildinfo"
+  ],
+  "keywords": [
+    "strong-strap",
+    "typescript",
+    "theme",
+    "react",
+    "gatsby"
   ],
   "scripts": {
-    "build": "npm-run-all build:*",
-    "build:ts": "tsc --project tsconfig.build.json",
-    "build:scss": "node-sass --output-style compressed -o dist/css src/scss"
+    "develop": "gatsby develop",
+    "start": "gatsby develop",
+    "build": "gatsby build",
+    "serve": "gatsby serve",
+    "clean": "gatsby clean",
+    "typecheck": "tsc --noEmit",
+    "dist": "npm-run-all dist:*",
+    "dist:ts": "tsc --project tsconfig.build.json",
+    "dist:scss": "node-sass --output-style compressed -o dist/css src/strong-strap/scss"
   },
+  "author": "Joseph McGurkin <joseph@mcgurkin.net>",
+  "license": "MIT",
   "repository": {
     "type": "git",
     "url": "git+https://github.com/tallman5/strong-strap.git"
   },
-  "keywords": [],
-  "author": "Joseph McGurkin <joseph@mcgurkin.net>",
-  "license": "MIT",
+  "homepage": "https://github.com/tallman5/strong-strap#readme",
   "bugs": {
     "url": "https://github.com/tallman5/strong-strap/issues"
-  },
-  "homepage": "https://github.com/tallman5/strong-strap#readme",
-  "devDependencies": {
-    "@types/react": "^18.0.25",
-    "@types/react-dom": "^18.0.9",
-    "node-sass": "^8.0.0",
-    "npm-run-all": "^4.1.5",
-    "typescript": "^4.8.4"
   },
   "dependencies": {
     "@react-spring/web": "^9.5.5",
     "react": "^18.2.0",
     "react-dom": "^18.2.0"
+  },
+  "devDependencies": {
+    "@mdx-js/react": "^2.1.5",
+    "@types/node": "^18.11.9",
+    "@types/react": "^18.0.25",
+    "@types/react-dom": "^18.0.8",
+    "gatsby": "^5.0.0",
+    "gatsby-plugin-image": "^3.0.0",
+    "gatsby-plugin-manifest": "^5.0.0",
+    "gatsby-plugin-mdx": "^5.0.0",
+    "gatsby-plugin-sass": "^6.0.0",
+    "gatsby-plugin-sharp": "^5.0.0",
+    "gatsby-plugin-sitemap": "^6.0.0",
+    "gatsby-source-filesystem": "^5.0.0",
+    "gatsby-transformer-sharp": "^5.0.0",
+    "node-sass": "^8.0.0",
+    "npm-run-all": "^4.1.5",
+    "sass": "^1.56.1",
+    "typescript": "^4.9.3"
   }
 }

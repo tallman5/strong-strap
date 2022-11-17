@@ -248,7 +248,7 @@ export const FormCheckInputChecked: CSSProperties = {
     borderColor: '#0d6efd',
     backgroundImage: `url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='-4 -4 8 8'%3e%3ccircle r='3' fill='%23fff'/%3e%3c/svg%3e")`,
 }
-export const FormCheckInputFocus = {
+export const FormCheckInputFocus: CSSProperties = {
     borderColor: '#86b7fe',
     outline: 0,
     boxShadow: '0 0 0 .25rem rgba(13,110,253,.25)',
