@@ -2,8 +2,8 @@ import * as React from 'react'
 import Layout from '../../components/layout'
 import { GatsbyImage, getImage } from 'gatsby-plugin-image'
 import { graphql } from "gatsby"
-import { Col, Container, Row } from '@tallman/strong-strap'
-import * as s from '@tallman/strong-strap/dist/styles'
+import { Container, Row, Col } from '../../../../src/index'
+import * as s from '../../../../src/styles'
 
 const PostTemplate = (props) => {
     const { location, data } = props

@@ -44,17 +44,23 @@ export const Btn = ({ children, isFullWidth = false, uiFunction = UiFunction.Non
                 setHoverStyle(s.BtnLightHover)
                 setFinalStyle(s.BtnLight)
                 break
-            case UiFunction.Primary:
-                setBaseStyle(s.BtnPrimary)
-                setFocusStyle(s.BtnPrimaryFocus)
-                setHoverStyle(s.BtnPrimaryHover)
-                setFinalStyle(s.BtnPrimary)
-                break
             case UiFunction.Secondary:
                 setBaseStyle(s.BtnSecondary)
                 setFocusStyle(s.BtnSecondaryFocus)
                 setHoverStyle(s.BtnSecondaryHover)
                 setFinalStyle(s.BtnSecondary)
+                break
+            case UiFunction.Success:
+                setBaseStyle(s.BtnSuccess)
+                setFocusStyle(s.BtnSuccessFocus)
+                setHoverStyle(s.BtnSuccessHover)
+                setFinalStyle(s.BtnSuccess)
+                break
+            default:
+                setBaseStyle(s.BtnPrimary)
+                setFocusStyle(s.BtnPrimaryFocus)
+                setHoverStyle(s.BtnPrimaryHover)
+                setFinalStyle(s.BtnPrimary)
                 break
         }
     }, [uiFunction])
@@ -355,5 +361,59 @@ export const NavBarNav = ({ children, isVertical = false }: INavBarNav) => {
     }, [isVertical])
     return (
         <div style={finalStyle}>{children}</div>
+    )
+}
+
+
+interface IScrollToTop extends ComponentPropsWithoutRef<'div'> {
+    isVisible?: boolean
+}
+export const ScrollToTop = ({ isVisible = false }: IScrollToTop) => {
+    const styles = useSpring({
+        config: config.stiff,
+        opacity: isVisible ? 1 : 0,
+        ...s.ScrollToTop,
+    })
+    return <animated.div style={styles}>
+        <Btn title='Top' onClick={() => { window.scrollTo({ top: 0, behavior: 'smooth' }) }} uiFunction={UiFunction.Primary} type='button'>⤒</Btn>
+    </animated.div>
+}
+
+
+interface IStringify extends ComponentPropsWithoutRef<'pre'> {
+    o: any
+}
+export const Stringify = ({ o }: IStringify) => {
+    return (
+        <pre>{JSON.stringify(o, null, 2)}</pre>
+    )
+}
+
+
+interface ISwitch extends ComponentPropsWithoutRef<'input'> {
+    caption?: string,
+}
+export const Switch = ({ caption, id, onBlur, onChange, onFocus, ...rest }: ISwitch) => {
+    // TODO: focused states
+    const [currentState, setCurrentState] = useState(s.FormCheckInput)
+
+    const thisChanged = (e: any) => {
+        if (e.target.checked)
+            setCurrentState(s.FormCheckInputChecked)
+        else
+            setCurrentState(s.FormCheckInput)
+
+        if (onChange) onChange(e)
+    }
+
+    return (
+        <div style={s.FormCheckSwitch}>
+            <input onChange={(e) => { thisChanged(e) }} style={currentState} type="checkbox" role="switch" id={id} {...rest} />
+            {
+                (caption && caption.length > 0)
+                    ? <label htmlFor={id}>{caption}</label>
+                    : null
+            }
+        </div>
     )
 }

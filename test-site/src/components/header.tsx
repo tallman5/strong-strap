@@ -1,9 +1,7 @@
 import { Link } from 'gatsby'
 import React, { useEffect, useState } from 'react'
-import { NavBar, NavBarCollapse, NavBarNav, NavBarToggler } from '@tallman/strong-strap'
-import { Container } from '@tallman/strong-strap'
-import { useMedia } from '@tallman/strong-strap/dist/utilities'
-import * as s from '@tallman/strong-strap/dist/styles'
+import { Container, NavBar, NavBarCollapse, NavBarNav, NavBarToggler, useMedia } from '../../../src/index'
+import * as s from '../../../src/styles'
 
 const Header = () => {
     const cols = useMedia(['(min-width: 475px)'], [1], 0)

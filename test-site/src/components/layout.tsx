@@ -7,10 +7,7 @@ const Layout = ({ children, ...rest }: ILayout) => {
     return (
         <div {...rest}>
             <Header />
-
             <main>{children}</main>
-            
-            <div>Footer</div>
         </div>
     )
 }

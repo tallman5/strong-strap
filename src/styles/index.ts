@@ -107,6 +107,25 @@ export const BtnLightHover: CSSProperties = {
     backgroundColor: '#f9fafb',
     borderColor: '#f9fafb',
 }
+export const BtnSuccess: CSSProperties = {
+    ...Btn,
+    color: '#fff',
+    backgroundColor: '#198754',
+    borderColor: '#198754',
+}
+export const BtnSuccessFocus: CSSProperties = {
+    ...Btn,
+    color: '#fff',
+    backgroundColor: '#157347',
+    borderColor: '#146c43',
+    boxShadow: '0 0 0 0.25rem rgba(60, 153, 110, 0.5)',
+}
+export const BtnSuccessHover: CSSProperties = {
+    ...Btn,
+    color: '#fff',
+    backgroundColor: '#157347',
+    borderColor: '#146c43',
+}
 
 
 export const Card: CSSProperties = {
@@ -371,7 +390,7 @@ export const NavBarBrand: CSSProperties = {
     display: 'flex',
     alignItems: 'center',
     justifyContent: 'center',
-    color: 'rgba(0, 0, 0, 0.9)',
+    color: 'var(--bs-body-color)',
     fontSize: '1.25rem',
     marginRight: '1rem',
     paddingBottom: '0.3125rem',
@@ -463,4 +482,12 @@ export const Col: CSSProperties = {
     flexGrow: 1,
     flexShrink: 0,
     flexBasis: '0%',
+}
+
+export const ScrollToTop: CSSProperties = {
+    bottom: '22px',
+    fontSize: 'xx-large',
+    position: 'fixed',
+    right: '22px',
+    zIndex: 500,
 }

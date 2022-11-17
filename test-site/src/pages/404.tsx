@@ -1,5 +1,5 @@
 import * as React from "react"
-import { Col, Container, Row } from "@tallman/strong-strap"
+import { Col, Container, Row } from "../../../src/index"
 import Layout from '../components/layout'
 
 const NotFoundPage = () => {
