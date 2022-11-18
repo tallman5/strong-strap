@@ -1,8 +1,14 @@
 import { CSSProperties } from "react";
 
 
-export const bshamburgericon = `url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 30 30'%3e%3cpath stroke='rgba%280, 0, 0, 0.55%29' stroke-linecap='round' stroke-miterlimit='10' stroke-width='2' d='M4 7h22M4 15h22M4 23h22'/%3e%3c/svg%3e")`
+export const bshamburgericon = `url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 30 30'%3e%3cpath stroke='rgb%28140, 140, 140%29' stroke-linecap='round' stroke-miterlimit='10' stroke-width='2' d='M4 7h22M4 15h22M4 23h22'/%3e%3c/svg%3e")`
 
+export type StatedStyles = {
+    active: CSSProperties,
+    base: CSSProperties,
+    focus: CSSProperties,
+    hover: CSSProperties,
+}
 
 export const AspectRatioContainer: CSSProperties = {
     position: 'relative',
@@ -42,7 +48,6 @@ export const Btn: CSSProperties = {
     fontWeight: 400,
     lineHeight: 1.5,
     padding: '.375rem .75rem',
-    textAlign: 'center',
     textDecoration: 'none',
     textTransform: 'none',
     transition: 'none',
@@ -69,6 +74,12 @@ export const BtnPrimaryHover: CSSProperties = {
     backgroundColor: '#0b5ed7',
     borderColor: '#0a58ca',
 }
+export const BtnPrimaryStates: StatedStyles = {
+    active: {},
+    base: BtnPrimary,
+    focus: BtnPrimaryFocus,
+    hover: BtnPrimaryHover,
+}
 export const BtnSecondary: CSSProperties = {
     ...Btn,
     color: '#fff',
@@ -88,6 +99,12 @@ export const BtnSecondaryHover: CSSProperties = {
     backgroundColor: '#5c636a',
     borderColor: '#565e64',
 }
+export const BtnSecondaryStates: StatedStyles = {
+    active: {},
+    base: BtnSecondary,
+    focus: BtnSecondaryFocus,
+    hover: BtnSecondaryHover,
+}
 export const BtnLight: CSSProperties = {
     ...Btn,
     color: '#000',
@@ -104,8 +121,14 @@ export const BtnLightFocus: CSSProperties = {
 export const BtnLightHover: CSSProperties = {
     ...Btn,
     color: '#000',
-    backgroundColor: '#f9fafb',
-    borderColor: '#f9fafb',
+    backgroundColor: '#d3d4d5',
+    borderColor: '#c6c7c8',
+}
+export const BtnLightStates: StatedStyles = {
+    active: {},
+    base: BtnLight,
+    focus: BtnLightFocus,
+    hover: BtnLightHover,
 }
 export const BtnSuccess: CSSProperties = {
     ...Btn,
@@ -125,6 +148,12 @@ export const BtnSuccessHover: CSSProperties = {
     color: '#fff',
     backgroundColor: '#157347',
     borderColor: '#146c43',
+}
+export const BtnSuccessStates: StatedStyles = {
+    active: {},
+    base: BtnSuccess,
+    focus: BtnSuccessFocus,
+    hover: BtnSuccessHover,
 }
 
 
@@ -199,15 +228,24 @@ export const Dropdown: CSSProperties = {
     position: 'relative',
 }
 export const DropdownMenu: CSSProperties = {
-    zIndex: 1000,
-    minWidth: '10rem',
-    padding: '.5rem 0',
-    margin: 0,
-    backgroundColor: '#fff',
     backgroundClip: 'padding-box',
+    backgroundColor: '#fff',
     border: '1px solid rgba(0,0,0,.15)',
     borderRadius: '.25rem',
+    listStyle: 'none',
+    minWidth: '10rem',
+    margin: 0,
+    padding: '.5rem 0',
     position: 'absolute',
+    textAlign: 'left',
+    zIndex: 1000,
+}
+export const DropdownMenuItem: CSSProperties = {
+    clear: 'both',
+    display: 'block',
+    textAlign: 'left',
+    width: '100%',
+    whiteSpace: 'nowrap',
 }
 
 
@@ -429,9 +467,9 @@ export const NavBarNavVer: CSSProperties = {
 }
 export const NavBarToggler: CSSProperties = {
     backgroundColor: 'transparent',
-    border: '1px solid rgba(0, 0, 0, 0.1)',
+    border: '1px solid rgb(140, 140, 140)',
     borderRadius: '0.375rem',
-    color: 'rgba(0, 0, 0, 0.55)',
+    color: 'rgb(140, 140, 140)',
     cursor: 'pointer',
     fontSize: '1.25rem',
     lineHeight: 1,
@@ -456,8 +494,13 @@ export const NavBarTogglerIcon: CSSProperties = {
 }
 export const NavLink: CSSProperties = {
     color: 'var(--bs-body-color)',
-    padding: '.5rem 1rem',
     display: 'block',
+    padding: '.5rem 1rem',
+    textDecoration: 'none',
+    transition: 'color 0.15s ease-in-out, background-color 0.15s ease-in-out, border-color 0.15s ease-in-out',
+}
+export const NavLinkHover: CSSProperties = {
+    borderColor: '#e9ecef #e9ecef #dee2e6',
 }
 
 

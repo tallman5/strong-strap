@@ -1,6 +1,6 @@
 # strong-strap
 
-strong-strap uses TS/TSX files for strongly typing most of the form components and styling, based on Bootstrap. It is built mainly for use in a Gatsby project, however should work for typical React sites.
+strong-strap is an NPM package which uses TS/TSX files for strongly typing most of the form components and Bootrap based styling.
 
 Currently, strong-strap is a subset of an entire theme. As components are needed, they are added to the package.
 

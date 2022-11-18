@@ -1,8 +1,8 @@
 import React, { ComponentPropsWithoutRef, CSSProperties, ReactElement, useEffect, useState } from 'react'
 import { animated, config, useSpring } from '@react-spring/web'
-import { UiFunction, useMasonryColumns, useMedia } from './utilities'
+import { useMasonryColumns, useMedia } from './utilities'
 import * as s from './styles'
-
+import type * as CSS from 'csstype';
 
 interface IBackdrop extends ComponentPropsWithoutRef<'div'> {
     isVisible?: boolean
@@ -25,60 +25,29 @@ export const Backdrop = ({ children, isVisible = false }: IBackdrop) => {
 
 interface IBtn extends ComponentPropsWithoutRef<'button'> {
     isFullWidth?: boolean,
-    uiFunction?: UiFunction
+    statedStyles: s.StatedStyles,
+    textalign?: CSS.Property.TextAlign,
 }
-export const Btn = ({ children, isFullWidth = false, uiFunction = UiFunction.None, ...rest }: IBtn) => {
-    const [baseStyle, setBaseStyle] = useState<CSSProperties | undefined>(s.Btn)
-    const [finalStyle, setFinalStyle] = useState<CSSProperties | undefined>(s.Btn)
-    const [focusStyle, setFocusStyle] = useState<CSSProperties | undefined>(s.Btn)
-    const [hoverStyle, setHoverStyle] = useState<CSSProperties | undefined>(s.Btn)
+export const Btn = ({ children, isFullWidth = false, statedStyles = s.BtnPrimaryStates, textalign = 'center', ...rest }: IBtn) => {
+    // TODO: create remaining UI Function styles and implement here
+    const [finalStyle, setFinalStyle] = useState(statedStyles.base)
     const [isHovering, setIsHovering] = useState(false)
     const [isFocused, setIsFocused] = useState(false)
 
-    // TODO: create remaining UI Function styles and implement here
-    useEffect(() => {
-        switch (uiFunction) {
-            case UiFunction.Light:
-                setBaseStyle(s.BtnLight)
-                setFocusStyle(s.BtnLightFocus)
-                setHoverStyle(s.BtnLightHover)
-                setFinalStyle(s.BtnLight)
-                break
-            case UiFunction.Secondary:
-                setBaseStyle(s.BtnSecondary)
-                setFocusStyle(s.BtnSecondaryFocus)
-                setHoverStyle(s.BtnSecondaryHover)
-                setFinalStyle(s.BtnSecondary)
-                break
-            case UiFunction.Success:
-                setBaseStyle(s.BtnSuccess)
-                setFocusStyle(s.BtnSuccessFocus)
-                setHoverStyle(s.BtnSuccessHover)
-                setFinalStyle(s.BtnSuccess)
-                break
-            default:
-                setBaseStyle(s.BtnPrimary)
-                setFocusStyle(s.BtnPrimaryFocus)
-                setHoverStyle(s.BtnPrimaryHover)
-                setFinalStyle(s.BtnPrimary)
-                break
-        }
-    }, [uiFunction])
-
     useEffect(() => {
         if (isFocused) {
-            setFinalStyle(focusStyle)
+            setFinalStyle(statedStyles.focus)
             return
         }
         if (isHovering) {
-            setFinalStyle(hoverStyle)
+            setFinalStyle(statedStyles.hover)
             return
         }
-        setFinalStyle(baseStyle)
-    }, [isFocused, isHovering, baseStyle])
+        setFinalStyle(statedStyles.base)
+    }, [isFocused, isHovering, statedStyles])
 
     return (
-        <button style={{ ...finalStyle, width: (isFullWidth) ? '100%' : 'auto' }} {...rest}
+        <button style={{ ...finalStyle, width: (isFullWidth) ? '100%' : 'auto', textAlign: textalign }} {...rest}
             onMouseEnter={() => { setIsHovering(true) }}
             onMouseLeave={() => { setIsHovering(false) }}
             onFocus={() => { setIsFocused(true) }}
@@ -133,11 +102,22 @@ export const Dropdown = ({ children }: IDropdown) => {
     )
 }
 interface IDropdownMenu extends ComponentPropsWithoutRef<'div'> {
-    isExpanded: boolean
+    isExpanded: boolean,
+    left?: string,
 }
-export const DropdownMenu = ({ children, isExpanded = false }: IDropdownMenu) => {
+export const DropdownMenu = ({ children, left = '0px', isExpanded = false }: IDropdownMenu) => {
     return (
-        <div style={{ ...s.DropdownMenu, display: (isExpanded) ? 'block' : 'none' }}>{children}</div>
+        <div style={{
+            ...s.DropdownMenu,
+            display: (isExpanded) ? 'block' : 'none',
+            left
+        }}>{children}</div>
+    )
+}
+interface IDropdownMenuItem extends ComponentPropsWithoutRef<'div'> { }
+export const DropdownMenuItem = ({ children }: IDropdownMenuItem) => {
+    return (
+        <div style={{ ...s.DropdownMenuItem }}>{children}</div>
     )
 }
 
@@ -375,7 +355,7 @@ export const ScrollToTop = ({ isVisible = false }: IScrollToTop) => {
         ...s.ScrollToTop,
     })
     return <animated.div style={styles}>
-        <Btn title='Top' onClick={() => { window.scrollTo({ top: 0, behavior: 'smooth' }) }} uiFunction={UiFunction.Primary} type='button'>⤒</Btn>
+        <Btn title='Top' statedStyles={s.BtnPrimaryStates} onClick={() => { window.scrollTo({ top: 0, behavior: 'smooth' }) }} type='button'>⤒</Btn>
     </animated.div>
 }
 
