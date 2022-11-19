@@ -1,12 +1,12 @@
 import React, { ComponentPropsWithoutRef } from 'react'
-import { Size, useColumnSizes, useContainerSizes } from './utilities'
-import * as s from './styles'
-
+import { Size, useColumnSizes, useContainerSizes } from '../utilities'
+import * as s from '../styles'
 
 interface ICol extends ComponentPropsWithoutRef<'div'> {
     size?: Size,
     colSpan?: number
 }
+
 export const Col = ({ children, size = Size.sm, colSpan = 0, ...rest }: ICol) => {
     const appendedStyle = useColumnSizes(size, colSpan)
     return (
@@ -14,10 +14,10 @@ export const Col = ({ children, size = Size.sm, colSpan = 0, ...rest }: ICol) =>
     )
 }
 
-
 interface IContainer extends ComponentPropsWithoutRef<'div'> {
     size?: Size
 }
+
 export const Container = ({ children, size = Size.sm, ...rest }: IContainer) => {
     const maxWidth = useContainerSizes(size)
     return (
@@ -25,8 +25,8 @@ export const Container = ({ children, size = Size.sm, ...rest }: IContainer) => 
     )
 }
 
-
 interface IRow extends ComponentPropsWithoutRef<'div'> { }
+
 export const Row = ({ children, ...rest }: IRow) => {
     return (
         <div style={s.Row} {...rest}>

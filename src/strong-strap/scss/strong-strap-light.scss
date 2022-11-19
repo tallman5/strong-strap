@@ -11,8 +11,11 @@
     --bs-gutter-x: 1.5rem;
     --bs-gutter-y: 0;
 
-    --bs-dark-rgb: 60,60,60;
-    --bs-light-rgb: 248,249,250;
+    --bs-dark-rgb: 60, 60, 60;
+    --bs-light-rgb: 248, 249, 250;
 
-    --bs-navbar-bgcolor: var(--bs-light-rgb)
+    --bs-navbar-bgcolor: var(--bs-light-rgb);
+
+    --bs-dropdown-bg: #fafafa;
+    --bs-dropdown-link-hover-bg: #e9ecef;
 }

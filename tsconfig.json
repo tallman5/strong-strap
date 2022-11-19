@@ -4,20 +4,15 @@
     "jsx": "react",
     "module": "commonjs",
     "resolveJsonModule": true,
-    "declaration": true, /* Generate .d.ts files from TypeScript and JavaScript files in your project. */
-    "sourceMap": true, /* Create source map files for emitted JavaScript files. */
-    "removeComments": true, /* Disable emitting comments. */
-    "noEmit": true, /* Disable emitting files from a compilation. */
-    "esModuleInterop": true, /* Emit additional JavaScript to ease support for importing CommonJS modules. This enables 'allowSyntheticDefaultImports' for type compatibility. */
-    "forceConsistentCasingInFileNames": true, /* Ensure that casing is correct in imports. */
-    "strict": true, /* Enable all strict type-checking options. */
-    "noUnusedLocals": true, /* Enable error reporting when local variables aren't read. */
-    "skipLibCheck": true /* Skip type checking all .d.ts files. */
-    // "lib": [
-    //   "dom",
-    //   "esnext"
-    // ],
-    // "moduleResolution": "node",
+    "declaration": true,
+    "sourceMap": true,
+    "removeComments": true,
+    "noEmit": true,
+    "esModuleInterop": true,
+    "forceConsistentCasingInFileNames": true,
+    "strict": true,
+    "noUnusedLocals": true,
+    "skipLibCheck": true
   },
   "include": [
     "./src/**/*",

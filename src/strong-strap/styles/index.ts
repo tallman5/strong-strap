@@ -40,7 +40,7 @@ export const Btn: CSSProperties = {
     backgroundColor: 'transparent',
     border: '1px solid transparent',
     borderRadius: '.25rem',
-    color: '#212529',
+    color: 'var(--bs-body-color)',
     cursor: 'pointer',
     display: 'inline-block',
     fontFamily: 'inherit',
@@ -54,6 +54,12 @@ export const Btn: CSSProperties = {
     userSelect: 'none',
     verticalAlign: 'middle',
     WebkitAppearance: 'button',
+}
+export const BtnStates: StatedStyles = {
+    active: Btn,
+    base: Btn,
+    focus: Btn,
+    hover: Btn,
 }
 export const BtnPrimary: CSSProperties = {
     ...Btn,
@@ -129,6 +135,31 @@ export const BtnLightStates: StatedStyles = {
     base: BtnLight,
     focus: BtnLightFocus,
     hover: BtnLightHover,
+}
+export const BtnLink: CSSProperties = {
+    ...Btn,
+    color: '#fff',
+    backgroundColor: '#198754',
+    borderColor: '#198754',
+}
+export const BtnLinkFocus: CSSProperties = {
+    ...Btn,
+    color: '#fff',
+    backgroundColor: '#157347',
+    borderColor: '#146c43',
+    boxShadow: '0 0 0 0.25rem rgba(60, 153, 110, 0.5)',
+}
+export const BtnLinkHover: CSSProperties = {
+    ...Btn,
+    color: '#fff',
+    backgroundColor: '#157347',
+    borderColor: '#146c43',
+}
+export const BtnLinkStates: StatedStyles = {
+    active: {},
+    base: BtnLink,
+    focus: BtnLinkFocus,
+    hover: BtnLinkHover,
 }
 export const BtnSuccess: CSSProperties = {
     ...Btn,
@@ -229,20 +260,25 @@ export const Dropdown: CSSProperties = {
 }
 export const DropdownMenu: CSSProperties = {
     backgroundClip: 'padding-box',
-    backgroundColor: '#fff',
+    backgroundColor: 'var(--bs-dropdown-bg)',
     border: '1px solid rgba(0,0,0,.15)',
     borderRadius: '.25rem',
     listStyle: 'none',
     minWidth: '10rem',
     margin: 0,
-    padding: '.5rem 0',
+    padding: '.5rem',
     position: 'absolute',
     textAlign: 'left',
     zIndex: 1000,
 }
 export const DropdownMenuItem: CSSProperties = {
+    backgroundColor: 'transparent',
+    border: '1px solid transparent',
+    borderRadius: '.25rem',
     clear: 'both',
+    color: 'var(--bs-body-color)',
     display: 'block',
+    padding: '.25rem 1rem',
     textAlign: 'left',
     width: '100%',
     whiteSpace: 'nowrap',

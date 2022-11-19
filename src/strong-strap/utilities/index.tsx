@@ -1,8 +1,55 @@
-import React, { useState, useEffect, CSSProperties, useRef } from 'react'
+import React, { useState, useEffect, CSSProperties } from 'react'
 
 export const defaultQueries = [
     '(min-width: 1400px)', '(min-width: 1200px)', '(min-width: 992px)', '(min-width: 768px)', '(min-width: 576px)'
 ]
+
+export const emptyGuid = "00000000-0000-0000-0000-000000000000"
+
+export async function executeFetchAsync(url: string, data: any, bearerToken: string) {
+    if (!isBrowser) return
+
+    const headers = new Headers();
+    headers.set('method', (data) ? 'POST' : 'GET')
+    headers.set("Content-Type", 'application/json')
+    headers.set("contentType", 'application/x-www-form-urlencoded')
+    if (bearerToken && bearerToken.length > 0)
+        headers.set('Authorization', 'Bearer ' + bearerToken)
+
+    const requestInit: RequestInit = {
+        method: (data) ? 'POST' : 'GET',
+        headers,
+    }
+    if (data)
+        requestInit.body = JSON.stringify(data)
+
+    const result = await fetch(url, requestInit)
+        .then(response => {
+            if (response.ok) {
+                return response.json()
+            }
+            else {
+                console.warn(response.json())
+                return null
+            }
+        })
+        .then(data => {
+            if (!data) {
+                console.warn("Connected, however no data from " + url)
+                return null
+            }
+            if (data.result) {
+                return data.result
+            }
+            return data
+        })
+        .catch(error => {
+            console.warn(error);
+            return null
+        })
+
+    return result
+}
 
 export function getHeaderTags(hi: HeaderInfo) {
     const returnValue =
@@ -27,6 +74,40 @@ export function getHeaderTags(hi: HeaderInfo) {
     return returnValue
 }
 
+export function getStorageItem(key: string) {
+    let returnValue = null;
+    if (isBrowser) {
+        const storageItem = window.localStorage.getItem(key);
+        if (storageItem) {
+            returnValue = JSON.parse(storageItem);
+        }
+    }
+    return returnValue;
+}
+
+export function getUniqueListBy(key: string, arr1: any[], arr2: any[]) {
+    const arr = (arr2) ? arr1.concat(arr2) : arr1
+    const result = [];
+    const map = new Map();
+
+    for (const item of arr) {
+        if (!map.has(item[key])) {
+            map.set(item[key], true);
+            result.push(item);
+        }
+    }
+
+    return result;
+}
+
+export const getUniqueValues = (items: any[], prop: string, removeEmpties: boolean = true) => {
+    let returnValue = [...new Set(items.map((item) => item[prop]))]
+    console.log(returnValue)
+    if (removeEmpties === true)
+        returnValue = returnValue.filter(i => (i && i.length > 0))
+    return returnValue
+}
+
 export type HeaderInfo = {
     baseUrl: string,
     description: string,
@@ -44,9 +125,16 @@ export const masonryQueries = [
     '(min-width: 1650px)', '(min-width: 1375px)', '(min-width: 1100px)', '(min-width: 825px)', '(min-width: 550px)'
 ]
 
+export function setStorageItem(key: string, obj: any) {
+    const serializedObj = JSON.stringify(obj);
+    window.localStorage.setItem(key, serializedObj);
+}
+
 export enum Size {
     sm, md, lg, xl, xxl, fluid
 }
+
+export const sumPropertyValue = (items: any[], prop: string) => items.reduce((a, b) => a + b[prop], 0);
 
 export enum UiFunction {
     Primary, Secondary, Success, Danger, Warning, Info, Light, Dark, Link
@@ -54,11 +142,12 @@ export enum UiFunction {
 
 export function useColumnSizes(size: Size, colSpan: number) {
     const collapsedStyle: CSSProperties = {
-        flexShrink: 0
+        flexShrink: 0,
+        flexBasis: 'auto'
     }
 
     const expandedStyle: CSSProperties = {
-        flex: (colSpan > 0) ? '0 0 auto' : '1 0 auto',
+        flexGrow: (colSpan > 0) ? '0' : '1',
         width: (colSpan > 0) ? (colSpan / 12) * 100 + '%' : 'auto',
     }
 
@@ -77,35 +166,6 @@ export function useColumnSizes(size: Size, colSpan: number) {
             return useMedia(defaultQueries, [expandedStyle, expandedStyle, expandedStyle, expandedStyle, expandedStyle], collapsedStyle)
     }
 }
-
-// export function useEventListener(eventName: string, handler, element) {
-//     const savedHandler = useRef();
-//     console.log(handler)
-//     console.log(element)
-
-//     useEffect(() => {
-//         savedHandler.current = handler;
-//     }, [handler]);
-
-//     useEffect(() => {
-//         let eleToUse = null
-//         if (element) {
-//             eleToUse = element
-//         }
-//         else {
-//             if (isBrowser) {
-//                 eleToUse = window
-//             }
-//         }
-//         const isSupported = eleToUse && eleToUse.addEventListener;
-//         if (!isSupported) return;
-//         const eventListener = event => savedHandler.current(event);
-//         eleToUse.addEventListener(eventName, eventListener);
-//         return () => {
-//             eleToUse.removeEventListener(eventName, eventListener);
-//         };
-//     }, [eventName, element]);
-// };
 
 export function useContainerSizes(size: Size) {
     switch (size) {

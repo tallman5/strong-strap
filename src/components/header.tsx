@@ -1,6 +1,6 @@
 import { Link } from 'gatsby'
 import React, { useEffect, useState } from 'react'
-import { Btn, CaretDownFill, Container, Dropdown, DropdownMenu, NavBar, NavBarCollapse, NavBarNav, NavBarToggler, PersonCircle, useMedia } from '../strong-strap'
+import { Btn, CaretDownFill, Container, Dropdown, DropdownMenu, DropdownMenuItem, NavBar, NavBarCollapse, NavBarNav, NavBarToggler, PersonCircle, useMedia } from '../strong-strap'
 import * as s from '../strong-strap/styles'
 
 const Header = () => {
@@ -34,16 +34,16 @@ const Header = () => {
                             }
                         </NavBarNav>
                         <Dropdown>
-                            <Btn statedStyles={s.BtnLightStates} type="button" onClick={(e) => { e.stopPropagation(); setDropdownVisible(!dropdownVisible); }}>
+                            <Btn statedStyles={s.BtnSecondaryStates} type="button" onClick={(e) => { e.stopPropagation(); setDropdownVisible(!dropdownVisible); }}>
                                 <div style={{ whiteSpace: 'nowrap', opacity: '0.5' }}>
                                     <PersonCircle />&nbsp;&nbsp;<CaretDownFill />
                                 </div>
                             </Btn>
                             <DropdownMenu isExpanded={dropdownVisible} left={(cols === 1) ? '-150px' : '0px'}>
-                                <Btn textalign='left' isFullWidth={true} statedStyles={s.BtnLightStates} type="button" >Sign Out</Btn>
-                                <Btn textalign='left' isFullWidth={true} statedStyles={s.BtnLightStates} type="button" >Sign Out</Btn>
-                                <Btn textalign='left' isFullWidth={true} statedStyles={s.BtnLightStates} type="button" >Sign Out</Btn>
-                                <Btn textalign='left' isFullWidth={true} statedStyles={s.BtnLightStates} type="button" >Sign Out</Btn>
+                                <DropdownMenuItem>Action</DropdownMenuItem>
+                                <hr style={{ margin: '0px' }} />
+                                <DropdownMenuItem>Another Action</DropdownMenuItem>
+                                <DropdownMenuItem>Something Else Here</DropdownMenuItem>
                             </DropdownMenu>
                         </Dropdown>
                     </NavBarCollapse>
