@@ -1,5 +1,6 @@
-import React, { ComponentPropsWithoutRef, useState } from "react"
+import React, { ComponentPropsWithoutRef, CSSProperties, useState } from "react"
 import * as s from '../styles'
+import Expander from "./expander"
 
 interface IDropdown extends ComponentPropsWithoutRef<'div'> { }
 
@@ -11,16 +12,19 @@ export const Dropdown = ({ children }: IDropdown) => {
 
 interface IDropdownMenu extends ComponentPropsWithoutRef<'div'> {
     isExpanded: boolean,
-    left?: string,
+    isRightAligned?: boolean,
 }
 
-export const DropdownMenu = ({ children, left = '0px', isExpanded = false }: IDropdownMenu) => {
+export const DropdownMenu = ({ children, isExpanded = false, isRightAligned = false }: IDropdownMenu) => {
+    const finalStyle: CSSProperties = {
+        ...s.DropdownMenu,
+        display: (isExpanded) ? 'block' : 'none',
+    }
+    if (isRightAligned === true)
+        finalStyle.right = 0
+
     return (
-        <div style={{
-            ...s.DropdownMenu,
-            display: (isExpanded) ? 'block' : 'none',
-            left
-        }}>{children}</div>
+        <div style={finalStyle}><Expander isExpanded={isExpanded}>{children}</Expander></div>
     )
 }
 

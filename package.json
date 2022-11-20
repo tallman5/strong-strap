@@ -1,6 +1,6 @@
 {
   "name": "@tallman/strong-strap",
-  "version": "0.0.8",
+  "version": "0.0.9",
   "description": "**This is still a work in progress**",
   "main": "dist/index.js",
   "files": [

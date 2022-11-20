@@ -39,7 +39,7 @@ const Header = () => {
                                     <PersonCircle />&nbsp;&nbsp;<CaretDownFill />
                                 </div>
                             </Btn>
-                            <DropdownMenu isExpanded={dropdownVisible} left={(cols === 1) ? '-150px' : '0px'}>
+                            <DropdownMenu isExpanded={dropdownVisible} isRightAligned={true}>
                                 <DropdownMenuItem>Action</DropdownMenuItem>
                                 <hr style={{ margin: '0px' }} />
                                 <DropdownMenuItem>Another Action</DropdownMenuItem>

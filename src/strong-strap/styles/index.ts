@@ -256,7 +256,9 @@ export const Container: CSSProperties = {
 
 
 export const Dropdown: CSSProperties = {
+    display: 'inline-flex',
     position: 'relative',
+    verticalAlign: 'middle',
 }
 export const DropdownMenu: CSSProperties = {
     backgroundClip: 'padding-box',
@@ -269,6 +271,7 @@ export const DropdownMenu: CSSProperties = {
     padding: '.5rem',
     position: 'absolute',
     textAlign: 'left',
+    top: '100%',
     zIndex: 1000,
 }
 export const DropdownMenuItem: CSSProperties = {
