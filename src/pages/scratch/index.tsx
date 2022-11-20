@@ -1,10 +1,8 @@
-import React, { useState } from 'react'
+import React from 'react'
 import Layout from '../../components/layout'
-import { Btn, Col, Container, Dropdown, DropdownMenu, DropdownMenuItem, Expander, Icon, IconShape, Row } from '../../strong-strap'
-import * as s from '../../strong-strap/styles'
+import { Col, Container, Icon, IconShape, Row } from '../../strong-strap'
 
 const ScratchIndex = () => {
-    const [isDdVisible, setIsDdVisible] = useState(false)
 
     return (
         <Layout>
@@ -13,7 +11,7 @@ const ScratchIndex = () => {
                     <Col><h1>Scratch</h1></Col>
                 </Row>
                 <Row>
-                    <Col>
+                    <Col colSpan={3}>
                         <h2>Icons</h2>
                         {
                             Object.keys(IconShape).filter(isNaN as any).map((is, index: number) => {
@@ -26,30 +24,14 @@ const ScratchIndex = () => {
                             })
                         }
                     </Col>
-                    <Col>
-                        <div style={{ position: 'relative' }}>
-                            <div>
-                                <Btn statedStyles={s.BtnSecondaryStates} onClick={() => { setIsDdVisible(!isDdVisible) }}>Dropdown Menu</Btn>
-                            </div>
-                            <div style={{ position: 'absolute', border: '1px solid red' }}>
-                                <Expander isExpanded={isDdVisible}>
-                                    <div>Fred</div>
-                                </Expander>
-                            </div>
-                        </div>
-                        Ginger
+                    <Col colSpan={6}>
+                        <h2>Col 2</h2>
                     </Col>
-                    <Col>
-                        <Dropdown>
-                            <Btn statedStyles={s.BtnSecondaryStates} onClick={() => { setIsDdVisible(!isDdVisible) }}>Dropdown Menu</Btn>
-                            <DropdownMenu isExpanded={isDdVisible} isRightAligned={true}>
-                                <DropdownMenuItem>Item One</DropdownMenuItem>
-                                <DropdownMenuItem>Item Two</DropdownMenuItem>
-                                <DropdownMenuItem>Item with a longer title</DropdownMenuItem>
-                            </DropdownMenu>
-                        </Dropdown>
-                        <br />
-                        Fred
+                    <Col colSpan={3}>
+                        <h2>Col 3</h2>
+                    </Col>
+                    <Col colSpan={5}>
+                        <h2>Col 4</h2>
                     </Col>
                 </Row>
             </Container>

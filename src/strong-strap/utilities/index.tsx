@@ -147,6 +147,7 @@ export function useColumnSizes(size: Size, colSpan: number) {
     }
 
     const expandedStyle: CSSProperties = {
+        ...collapsedStyle,
         flexGrow: (colSpan > 0) ? '0' : '1',
         width: (colSpan > 0) ? (colSpan / 12) * 100 + '%' : 'auto',
     }
