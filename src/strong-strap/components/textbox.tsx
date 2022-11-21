@@ -14,10 +14,10 @@ export const FloatingTextBox = ({ helpText, label, name, value, ...rest }: IFloa
     const [labelStyle, setLabelStyle] = useState<CSSProperties>(s.FloatingLabel)
 
     useEffect(() => {
-        if (value) {
+        if (value && value.length > 0) {
             setLabelStyle(s.FloatingLabelFocus)
         }
-    }, [])
+    }, [value])
 
     const thisFocus = (e: any) => {
         setInputStyle({

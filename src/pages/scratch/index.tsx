@@ -1,8 +1,9 @@
-import React from 'react'
+import React, { useState } from 'react'
 import Layout from '../../components/layout'
-import { Col, Container, Icon, IconShape, Row } from '../../strong-strap'
+import { Col, Container, FloatingTextBox, Icon, IconShape, Row } from '../../strong-strap'
 
 const ScratchIndex = () => {
+    const [email, setEmail] = useState('')
 
     return (
         <Layout>
@@ -32,6 +33,7 @@ const ScratchIndex = () => {
                     </Col>
                     <Col colSpan={5}>
                         <h2>Col 4</h2>
+                        <FloatingTextBox onChange={(e) => { setEmail(e.target.value) }} label={'Email Address'} name={'email'} value={email} />
                     </Col>
                 </Row>
             </Container>
