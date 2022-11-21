@@ -15,11 +15,12 @@ export const AspectRatioContainer: CSSProperties = {
     // paddingTop: '93%',
 }
 export const AspectRatioItem: CSSProperties = {
-    left: 0,
     height: '100%',
+    left: 0,
+    objectFit: 'cover',
     position: 'absolute',
     top: 0,
-    width: '100%'
+    width: '100%',
 }
 
 
@@ -226,6 +227,12 @@ export const CardTitle: CSSProperties = {
     lineHeight: 1.2,
     fontSize: '1.25rem',
     marginBottom: '.5rem',
+}
+export const CardWall: CSSProperties = {
+    display: 'flex',
+    flexWrap: 'wrap',
+    justifyContent: 'space-evenly',
+    width: '100%'
 }
 
 

@@ -1,9 +1,44 @@
-import React, { useState } from 'react'
+import { Link } from 'gatsby'
+import React, { CSSProperties, useEffect, useState } from 'react'
 import Layout from '../../components/layout'
-import { Col, Container, FloatingTextBox, Icon, IconShape, Row } from '../../strong-strap'
+import { AspectRatioContainer, Card, CardWall, Col, Container, Row, Size, useMedia } from '../../strong-strap'
+import * as s from '../../strong-strap/styles'
+
+const radius = '5px'
+
+const ImageStyle: CSSProperties = {
+    ...s.AspectRatioItem,
+    borderTopLeftRadius: radius,
+    borderTopRightRadius: radius,
+}
+
+const LinkStyle: CSSProperties = {
+    color: 'var(--bs-body-color)',
+    padding: '5px',
+    textDecoration: 'none',
+}
 
 const ScratchIndex = () => {
-    const [email, setEmail] = useState('')
+    const [imageUrls, setImageUrls] = useState<string[]>([])
+    const colWidth = useMedia(
+        ['(min-width: 1400px)', '(min-width: 1200px)', '(min-width: 1000px)', '(min-width: 800px)', '(min-width: 600px)', '(min-width: 400px)'],
+        ['14.28%', '16%', '20%', '25%', '33.33%', '50%'], '100%'
+    )
+    console.log(colWidth)
+
+    const linkStyle: CSSProperties = {
+        ...LinkStyle,
+        width: colWidth
+    }
+
+    useEffect(() => {
+        if (imageUrls.length > 0) return
+        const urls: string[] = []
+        for (let index = 0; index < 50; index++) {
+            urls.push('https://image.tmdb.org/t/p/w185/lnWkyG3LLgbbrIEeyl5mK5VRFe4.jpg')
+        }
+        setImageUrls(urls)
+    }, [imageUrls])
 
     return (
         <Layout>
@@ -11,29 +46,28 @@ const ScratchIndex = () => {
                 <Row>
                     <Col><h1>Scratch</h1></Col>
                 </Row>
+                <br />
+            </Container>
+            <Container size={Size.fluid}>
                 <Row>
-                    <Col colSpan={3}>
-                        <h2>Icons</h2>
-                        {
-                            Object.keys(IconShape).filter(isNaN as any).map((is, index: number) => {
-                                return (
-                                    <span key={is}>
-                                        <Icon size={32} iconShape={index as IconShape} />
-                                        &nbsp;
-                                    </span>
-                                )
-                            })
-                        }
-                    </Col>
-                    <Col colSpan={6}>
-                        <h2>Col 2</h2>
-                    </Col>
-                    <Col colSpan={3}>
-                        <h2>Col 3</h2>
-                    </Col>
-                    <Col colSpan={5}>
-                        <h2>Col 4</h2>
-                        <FloatingTextBox onChange={(e) => { setEmail(e.target.value) }} label={'Email Address'} name={'email'} value={email} />
+                    <Col>
+                        <CardWall>
+                            {
+                                imageUrls.map((iUrl, index) => {
+                                    return (
+                                        <Link key={index} to="#" style={linkStyle}>
+                                            <Card>
+                                                <div>
+                                                    <AspectRatioContainer paddingTop='150%'>
+                                                        <img style={ImageStyle} src={iUrl} alt='Movie' />
+                                                    </AspectRatioContainer>
+                                                </div>
+                                            </Card>
+                                        </Link>
+                                    )
+                                })
+                            }
+                        </CardWall>
                     </Col>
                 </Row>
             </Container>
