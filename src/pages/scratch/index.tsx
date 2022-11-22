@@ -14,7 +14,7 @@ const ScratchIndex = () => {
                 <br />
                 <Row>
                     <Col>
-                        <IconToggle checkedFill='#eee' uncheckedFill='#777' width='25%' id='testToggle' caption='Testing' checkedIcon={KnownIcon.ThumbUpFill} uncheckedIcon={KnownIcon.ThumbUp} title='My Title' />
+                        <IconToggle checked={true} checkedFill='#eee' uncheckedFill='#777' width='25%' id='testToggle' caption='Testing' checkedIcon={KnownIcon.ThumbUpFill} uncheckedIcon={KnownIcon.ThumbUp} title='My Title' />
                     </Col>
                 </Row>
             </Container>

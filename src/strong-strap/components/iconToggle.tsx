@@ -11,8 +11,8 @@ interface IIconToggle extends ComponentPropsWithoutRef<'input'> {
     width?: string
 }
 
-export const IconToggle = ({ caption = '', checkedFill = 'currentColor', checkedIcon, id, onChange, uncheckedFill = 'currentColor', uncheckedIcon, width = '100%', ...rest }: IIconToggle) => {
-    const [isChecked, setIsChecked] = useState(false)
+export const IconToggle = ({ checked, caption = '', checkedFill = 'currentColor', checkedIcon, id, onChange, uncheckedFill = 'currentColor', uncheckedIcon, width = '100%', ...rest }: IIconToggle) => {
+    const [isChecked, setIsChecked] = useState(checked)
 
     const thisChanged = (e: ChangeEvent<HTMLInputElement>) => {
         setIsChecked(!isChecked)
