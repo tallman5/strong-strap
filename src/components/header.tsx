@@ -1,6 +1,6 @@
 import { Link } from 'gatsby'
 import React, { useEffect, useState } from 'react'
-import { Btn, CaretDownFill, Container, Dropdown, DropdownMenu, DropdownMenuItem, NavBar, NavBarCollapse, NavBarNav, NavBarToggler, PersonCircle, useMedia } from '../strong-strap'
+import { Btn, Container, Dropdown, DropdownMenu, DropdownMenuItem, Icon, KnownIcon, NavBar, NavBarCollapse, NavBarNav, NavBarToggler, useMedia } from '../strong-strap'
 import * as s from '../strong-strap/styles'
 
 const Header = () => {
@@ -36,7 +36,7 @@ const Header = () => {
                         <Dropdown>
                             <Btn statedStyles={s.BtnSecondaryStates} type="button" onClick={(e) => { e.stopPropagation(); setDropdownVisible(!dropdownVisible); }}>
                                 <div style={{ whiteSpace: 'nowrap', opacity: '0.5' }}>
-                                    <PersonCircle />&nbsp;&nbsp;<CaretDownFill />
+                                    <Icon knownIcon={KnownIcon.PersonCircle} width='16px' />&nbsp;&nbsp;<Icon knownIcon={KnownIcon.CaretDownFill} width='16px' />
                                 </div>
                             </Btn>
                             <DropdownMenu isExpanded={dropdownVisible} isRightAligned={true}>

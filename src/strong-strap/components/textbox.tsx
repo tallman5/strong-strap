@@ -4,7 +4,6 @@ import * as s from '../styles'
 interface IFloatingTextBox extends ComponentPropsWithoutRef<'input'> {
     helpText?: string,
     label: string,
-    name: string,
     value: string,
 }
 

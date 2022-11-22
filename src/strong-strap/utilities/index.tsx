@@ -168,6 +168,18 @@ export function useColumnSizes(size: Size, colSpan: number) {
     }
 }
 
+export function useColumnWidths(width: number) {
+    const queries: string[] = []
+    const values: string[] = []
+
+    for (let index = 10; index > 1; index--) {
+        queries.push('(min-width: ' + index * width + 'px)')
+        values.push(100 / index + '%')
+    }
+
+    return useMedia(queries, values, '100%')
+}
+
 export function useContainerSizes(size: Size) {
     switch (size) {
         case Size.fluid:
