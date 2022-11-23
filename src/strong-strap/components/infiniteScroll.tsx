@@ -2,9 +2,10 @@ import React, { ComponentPropsWithoutRef, useEffect } from "react";
 
 interface IInfiniteScroll extends ComponentPropsWithoutRef<'div'> {
     hitBottom: any
+    padding?: number
 }
 
-export const InfiniteScroll = ({ children, hitBottom }: IInfiniteScroll) => {
+export const InfiniteScroll = ({ children, hitBottom, padding = 0 }: IInfiniteScroll) => {
     const timeToLoad = 'timeToLoad'
 
     useEffect(() => {
@@ -12,7 +13,7 @@ export const InfiniteScroll = ({ children, hitBottom }: IInfiniteScroll) => {
             const ttlDiv = document.getElementById(timeToLoad)
             if (!ttlDiv) return
 
-            if (ttlDiv.offsetTop < (window.scrollY + window.innerHeight)) {
+            if (ttlDiv.offsetTop < (window.scrollY + window.innerHeight + padding)) {
                 hitBottom()
             }
         }
@@ -24,7 +25,7 @@ export const InfiniteScroll = ({ children, hitBottom }: IInfiniteScroll) => {
     return (
         <div>
             <div>{children}</div>
-            <div id={timeToLoad} style={{ textAlign: 'center' }}>{timeToLoad}</div>
+            <div id={timeToLoad} style={{ textAlign: 'center' }}>&nbsp;</div>
         </div>
     )
 }
