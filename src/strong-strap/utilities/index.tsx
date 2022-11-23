@@ -85,6 +85,21 @@ export function getStorageItem(key: string) {
     return returnValue;
 }
 
+export function getUniqueList(arr1: any[], arr2: any[]) {
+    const arr = (arr2) ? arr1.concat(arr2) : arr1
+    const result = [];
+    const map = new Map();
+
+    for (const item of arr) {
+        if (!map.has(item)) {
+            map.set(item, true);
+            result.push(item);
+        }
+    }
+
+    return result;
+}
+
 export function getUniqueListBy(key: string, arr1: any[], arr2: any[]) {
     const arr = (arr2) ? arr1.concat(arr2) : arr1
     const result = [];
