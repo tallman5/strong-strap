@@ -8,5 +8,3 @@ export const CardWall = ({ children, ...rest }: ICardWall) => {
         <div style={s.CardWall} {...rest}>{children}</div>
     )
 }
-
-export default CardWall

@@ -11,6 +11,7 @@ export type StatedStyles = {
 }
 
 export const AspectRatioContainer: CSSProperties = {
+    display: 'flex',
     position: 'relative',
     // paddingTop: '93%',
 }
@@ -398,6 +399,11 @@ export const FixedTop: CSSProperties = {
     right: 0,
     left: 0,
     zIndex: 1030,
+}
+
+
+export const HorizontalScrollContainer: CSSProperties = {
+    display: "flex", overflowX: "auto", maxWidth: "100%"
 }
 
 

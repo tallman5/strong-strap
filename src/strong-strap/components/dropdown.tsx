@@ -1,6 +1,6 @@
 import React, { ComponentPropsWithoutRef, CSSProperties, useState } from "react"
 import * as s from '../styles'
-import Expander from "./expander"
+import { Expander } from "./expander"
 
 interface IDropdown extends ComponentPropsWithoutRef<'div'> { }
 

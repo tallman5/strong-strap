@@ -1,11 +1,18 @@
 import React, { ComponentPropsWithoutRef } from 'react'
 
+// Icons can be directly added or adding <Icon /> with the KnownIcon property
+//
+// For new Icons:
+// 1. Add the export const [IconName] implementing ISvg
+// 2. Update the enum KnownIcon
+// 3. Update the export const Icon with the new one
+
 interface ISvg extends ComponentPropsWithoutRef<'svg'> { }
 
 export const BookmarkCheckFill = ({ ...rest }: ISvg) => {
     return (
         <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16" {...rest}>
-            <path fill-rule="evenodd" d="M2 15.5V2a2 2 0 0 1 2-2h8a2 2 0 0 1 2 2v13.5a.5.5 0 0 1-.74.439L8 13.069l-5.26 2.87A.5.5 0 0 1 2 15.5zm8.854-9.646a.5.5 0 0 0-.708-.708L7.5 7.793 6.354 6.646a.5.5 0 1 0-.708.708l1.5 1.5a.5.5 0 0 0 .708 0l3-3z" />
+            <path fillRule="evenodd" d="M2 15.5V2a2 2 0 0 1 2-2h8a2 2 0 0 1 2 2v13.5a.5.5 0 0 1-.74.439L8 13.069l-5.26 2.87A.5.5 0 0 1 2 15.5zm8.854-9.646a.5.5 0 0 0-.708-.708L7.5 7.793 6.354 6.646a.5.5 0 1 0-.708.708l1.5 1.5a.5.5 0 0 0 .708 0l3-3z" />
         </svg>
     )
 }
@@ -110,6 +117,15 @@ export const PersonCircle = ({ ...rest }: ISvg) => {
     )
 }
 
+export const PersonSquare = ({ ...rest }: ISvg) => {
+    return (
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox='0 0 16 16' {...rest}>
+            <path d="M11 6a3 3 0 1 1-6 0 3 3 0 0 1 6 0z" />
+            <path d="M2 0a2 2 0 0 0-2 2v12a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V2a2 2 0 0 0-2-2H2zm12 1a1 1 0 0 1 1 1v12a1 1 0 0 1-1 1v-1c0-1-1-4-6-4s-6 3-6 4v1a1 1 0 0 1-1-1V2a1 1 0 0 1 1-1h12z" />
+        </svg>
+    )
+}
+
 export const ThumbDown = ({ ...rest }: ISvg) => {
     return (
         <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16" {...rest}>
@@ -144,8 +160,8 @@ export const ThumbUpFill = ({ ...rest }: ISvg) => {
 
 export enum KnownIcon {
     BookmarkCheckFill, CameraVideo, CameraVideoSlash, CameraVideoFill, CameraVideoFillSlash,
-    CaretDownFill, Eye, EyeFill, Film, Image, List, MagnifyingGlass, PersonCircle, ThumbDown,
-    ThumbDownFill, ThumbUp, ThumbUpFill
+    CaretDownFill, Eye, EyeFill, Film, Image, List, MagnifyingGlass, PersonCircle, PersonSquare,
+    ThumbDown, ThumbDownFill, ThumbUp, ThumbUpFill
 }
 
 interface IIcon extends ComponentPropsWithoutRef<'svg'> {
@@ -193,6 +209,9 @@ export const Icon = ({ knownIcon, ...rest }: IIcon) => {
 
         case KnownIcon.PersonCircle:
             return <PersonCircle {...rest} />
+
+        case KnownIcon.PersonSquare:
+            return <PersonSquare {...rest} />
 
         case KnownIcon.ThumbDown:
             return <ThumbDown {...rest} />

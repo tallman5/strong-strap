@@ -29,5 +29,3 @@ export const InfiniteScroll = ({ children, hitBottom, padding = 0 }: IInfiniteSc
         </div>
     )
 }
-
-export default InfiniteScroll

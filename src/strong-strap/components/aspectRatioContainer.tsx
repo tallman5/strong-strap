@@ -2,17 +2,15 @@ import React, { ComponentPropsWithoutRef, CSSProperties } from "react";
 import * as s from '../styles'
 
 interface IAspectRatioContainer extends ComponentPropsWithoutRef<'div'> { 
-    paddingTop: string
+    aspectRatio: string
 }
 
-export const AspectRatioContainer = ({ children, paddingTop, ...rest }: IAspectRatioContainer) => {
+export const AspectRatioContainer = ({ children, aspectRatio, ...rest }: IAspectRatioContainer) => {
     const finalStyle: CSSProperties = {
         ...s.AspectRatioContainer,
-        paddingTop,
+        paddingTop: aspectRatio,
     }
     return (
         <div style={finalStyle} {...rest}>{children}</div>
     )
 }
-
-export default AspectRatioContainer

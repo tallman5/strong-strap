@@ -34,5 +34,3 @@ export const IconToggle = ({ checked, caption = '', checkedFill = 'currentColor'
         </div>
     )
 }
-
-export default IconToggle

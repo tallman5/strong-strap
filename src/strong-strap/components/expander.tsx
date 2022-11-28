@@ -15,5 +15,3 @@ export const Expander = ({ children, isExpanded = false, ...rest }: IExpander) =
         <animated.div style={styles}>{children}</animated.div>
     )
 }
-
-export default Expander
