@@ -10,6 +10,20 @@ export type StatedStyles = {
     hover: CSSProperties,
 }
 
+export const RoundedBottom: CSSProperties = {
+    borderBottomLeftRadius: 'var(--bs-radius)',
+    borderBottomRightRadius: 'var(--bs-radius)',
+}
+export const RoundedTop: CSSProperties = {
+    borderTopLeftRadius: 'var(--bs-radius)',
+    borderTopRightRadius: 'var(--bs-radius)',
+}
+export const Rounded: CSSProperties = {
+    ...RoundedBottom,
+    ...RoundedTop
+}
+
+
 export const AspectRatioContainer: CSSProperties = {
     display: 'flex',
     position: 'relative',

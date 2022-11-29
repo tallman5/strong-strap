@@ -23,6 +23,9 @@ const ScratchIndex = () => {
                     <Col>
                         <Link to='./infiniteScroll'>Infinite Scroll</Link>
                     </Col>
+                    <Col>
+                        <Link to='./messages'>Messages</Link>
+                    </Col>
                 </Row>
             </Container>
         </Layout >
