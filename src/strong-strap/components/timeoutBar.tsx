@@ -8,7 +8,7 @@ interface ITimeoutBar extends ComponentPropsWithoutRef<'div'> {
     height?: string,
 }
 
-const TimeoutBar = ({ background = 'rgb(25, 135, 84)', duration = 5000, height = '20px' }: ITimeoutBar) => {
+export const TimeoutBar = ({ background = 'rgb(25, 135, 84)', duration = 5000, height = '20px' }: ITimeoutBar) => {
     const [isRunning, setIsRunning] = useState(false)
     const props = useSpring({
         width: isRunning ? `${100}%` : `0%`,
@@ -45,5 +45,3 @@ const TimeoutBar = ({ background = 'rgb(25, 135, 84)', duration = 5000, height =
         </div>
     )
 }
-
-export default TimeoutBar
