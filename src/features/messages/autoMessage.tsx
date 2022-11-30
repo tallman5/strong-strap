@@ -1,9 +1,7 @@
 import React, { ComponentPropsWithoutRef, useEffect, useState } from "react";
 import { deleteMessage, Message } from "./messageSlice";
 import { useAppDispatch } from "../../context/store";
-import { Btn, Expander, Icon, KnownIcon } from "../../strong-strap";
-import { Alert } from "../../strong-strap/components/alert";
-import TimeoutBar from "../../strong-strap/components/timeoutBar";
+import { Alert, Btn, Expander, Icon, KnownIcon, TimeoutBar } from "../../strong-strap";
 
 interface IAutoMessage extends ComponentPropsWithoutRef<'div'> {
     message: Message

@@ -1,8 +1,10 @@
-import React from 'react'
+import React, { useState } from 'react'
 import Layout from '../../components/layout'
-import { Col, Container, Icon, KnownIcon, Row } from '../../strong-strap'
+import { Col, Container, Icon, IconToggle, KnownIcon, Row } from '../../strong-strap'
 
 const ScratchIndex = () => {
+    const [isChecked, setIsChecked] = useState(false)
+
     return (
         <Layout>
             <Container>
@@ -21,6 +23,15 @@ const ScratchIndex = () => {
                             )
                         })
                     }
+                </Row>
+                <br />
+                <Row>
+                    <Col>
+                        <IconToggle onClick={e => e.stopPropagation()} onChange={(e) => { setIsChecked(!isChecked) }}
+                            checkedIcon={KnownIcon.ThumbUpFill} uncheckedIcon={KnownIcon.ThumbUp} width={'32px'} checkedFill='green'
+                            checked={isChecked} title="I really liked this!" name={'twoThumbs'} />
+
+                    </Col>
                 </Row>
             </Container>
         </Layout >
