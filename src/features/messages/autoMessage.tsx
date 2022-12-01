@@ -9,7 +9,7 @@ interface IAutoMessage extends ComponentPropsWithoutRef<'div'> {
 
 const AutoMessage = ({ message }: IAutoMessage) => {
     const dispatch = useAppDispatch()
-    const [isExpanded, setIsExpanded] = useState(true)
+    const [isExpanded, setIsExpanded] = useState(false)
 
     const collapse = () => {
         setIsExpanded(false)
@@ -22,6 +22,10 @@ const AutoMessage = ({ message }: IAutoMessage) => {
         if (!message) return
         window.setTimeout(collapse, 5000)
     }, [message])
+
+    useEffect(() => {
+        window.setTimeout(() => { setIsExpanded(true) }, 50)
+    }, [])
 
     return (
         <Expander isExpanded={isExpanded}>

@@ -1,4 +1,4 @@
-import React, { useState, useEffect, CSSProperties } from 'react'
+import React, { useState, useEffect, CSSProperties, useRef } from 'react'
 
 export const defaultQueries = [
     '(min-width: 1400px)', '(min-width: 1200px)', '(min-width: 992px)', '(min-width: 768px)', '(min-width: 576px)'
@@ -117,7 +117,6 @@ export function getUniqueListBy(key: string, arr1: any[], arr2: any[]) {
 
 export const getUniqueValues = (items: any[], prop: string, removeEmpties: boolean = true) => {
     let returnValue = [...new Set(items.map((item) => item[prop]))]
-    console.log(returnValue)
     if (removeEmpties === true)
         returnValue = returnValue.filter(i => (i && i.length > 0))
     return returnValue
@@ -236,6 +235,12 @@ export function useMedia<T>(queries: string[], values: T[], defaultValue: T) {
         }, []);
 
     return value;
+}
+
+export function usePrevious<T>(value: T) {
+    const ref = useRef<T>()
+    useEffect(() => void (ref.current = value), [value])
+    return ref.current
 }
 
 export function useWindowSize() {

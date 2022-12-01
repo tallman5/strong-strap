@@ -21,7 +21,7 @@ const Header = () => {
                 <Container>
                     <Link to='/' style={s.NavBarBrand}>
                         <img src='/icon.png' width={'24px'} alt='m' />
-                        <span style={{ marginLeft: '10px' }}>{(cols > 0) ? 'mcgurkin.net' : ''}</span>
+                        <span style={{ marginLeft: '10px' }}>{(cols > 0) ? 'mysite.com' : ''}</span>
                     </Link>
                     <NavBarToggler onClick={() => { setNavMenuVisible(!navMenuVisible) }} isVisible={(cols === 0) ? true : false} />
                     <NavBarCollapse isVertical={(cols === 0) ? true : false} isVisible={navMenuVisible}>

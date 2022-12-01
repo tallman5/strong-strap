@@ -14,21 +14,22 @@ const CarouselSample = () => {
                 <br />
                 <Row>
                     <Col>
+                        <Carousel aspectRatio='40%'>
+                            <StaticImage style={s.AspectRatioItem} src='../../images/testimg-cover.jpg' alt={'Bear'} />
+                            <StaticImage style={s.AspectRatioItem} src='../../images/testimg1.jpg' alt={'Sunrise'} />
+                            <StaticImage style={s.AspectRatioItem} src='../../images/testimg2.jpg' alt={'Photographer'} />
+                        </Carousel>
+                    </Col>
+                </Row>
+                <br />
+                <Row>
+                    <Col>
                         <AspectRatioContainer aspectRatio='100%'>
                             <StaticImage style={s.AspectRatioItem} src='../../images/testimg-cover.jpg' alt={'Bear'} />
                         </AspectRatioContainer>
                     </Col>
                     <Col>
                         <ImagePlaceholder aspectRatio='100%' src='https://image.tmdb.org/t/p/w185/uAeZI1JJbLPq7Bu5dziH7emHeu7.jpg' alt={'Lost Bullet 2'} />
-                    </Col>
-                </Row>
-                <br />
-                <Row>
-                    <Col>
-                        <Carousel aspectRatio='40%'>
-                            <StaticImage style={s.AspectRatioItem} src='../../images/testimg-cover.jpg' alt={'Bear'} />
-                            <StaticImage style={s.AspectRatioItem} src='../../images/testimg1.jpg' alt={'Sunrise'} />
-                        </Carousel>
                     </Col>
                 </Row>
             </Container>

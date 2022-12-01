@@ -26,6 +26,9 @@ const ScratchIndex = () => {
                     <Col>
                         <Link to='./messages'>Messages</Link>
                     </Col>
+                    <Col>
+                        <Link to='./motions'>Motion</Link>
+                    </Col>
                 </Row>
             </Container>
         </Layout >
