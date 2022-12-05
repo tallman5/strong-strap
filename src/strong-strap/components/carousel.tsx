@@ -1,15 +1,16 @@
-import React, { ComponentPropsWithoutRef, CSSProperties, useEffect, useState } from "react";
+import React, { CSSProperties, ReactNode, useEffect, useState } from "react";
 import * as s from '../styles'
 import { AspectRatioContainer } from "./aspectRatioContainer";
 
-interface ICarousel extends ComponentPropsWithoutRef<'div'> {
+interface ICarousel {
     aspectRatio?: string,
-    children: any[]
+    children: ReactNode,
     duration?: number,
 }
 
-export const Carousel = ({ aspectRatio = '20%', children, duration = 5000, ...rest }: ICarousel) => {
+export const Carousel = ({ aspectRatio = '20%', children, duration = 5000 }: ICarousel) => {
     const [currentIndex, setIndex] = useState(0)
+    const kids = children as []
 
     const itemStyle: CSSProperties = {
         ...s.AspectRatioItem,
@@ -18,16 +19,15 @@ export const Carousel = ({ aspectRatio = '20%', children, duration = 5000, ...re
 
     useEffect(() => {
         const inter = setInterval(() => {
-            setIndex(state => (state + 1) % children?.length)
+            setIndex(state => (state + 1) % kids?.length)
         }, duration)
-
         return function cleanUp() { window.clearInterval(inter) }
     }, [])
 
     return (
         <AspectRatioContainer aspectRatio={aspectRatio}>
             {
-                children?.map((child, index: number) => {
+                kids?.map((child, index: number) => {
                     return (
                         <div key={index}
                             style={{ ...itemStyle, opacity: (index === currentIndex) ? 1 : 0 }}>

@@ -5,7 +5,7 @@ import * as s from '../strong-strap/styles'
 
 const Header = () => {
     const cols = useMedia(['(min-width: 475px)'], [1], 0)
-    const [navMenuVisible, setNavMenuVisible] = useState(true)
+    const [navMenuVisible, setNavMenuVisible] = useState(false)
     const [dropdownVisible, setDropdownVisible] = useState(false)
 
     useEffect(() => {

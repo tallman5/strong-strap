@@ -5,16 +5,19 @@ interface INavBar extends ComponentPropsWithoutRef<'nav'> {
     isFixedTop?: boolean
 }
 
-export const NavBar = ({ children, isFixedTop = false }: INavBar) => {
-    let finalStyle = s.NavBar
+export const NavBar = ({ children, isFixedTop = false, style, ...rest }: INavBar) => {
+    let finalStyle = {
+        ...style,
+        ...s.NavBar
+    }
     if (isFixedTop && isFixedTop === true)
         finalStyle = {
+            ...style,
             ...s.NavBar,
             ...s.FixedTop,
-            backgroundColor: '#f8f9fa'
         }
     return (
-        <nav style={finalStyle}>{children}</nav>
+        <nav style={finalStyle} {...rest}>{children}</nav>
     )
 }
 
@@ -41,8 +44,8 @@ interface INavBarCollapse extends ComponentPropsWithoutRef<'div'> {
     isVisible?: boolean,
 }
 
-export const NavBarCollapse = ({ children, isVertical = false, isVisible = true }: INavBarCollapse) => {
-    const [finalStyle, setFinalStyle] = useState<CSSProperties>(s.NavBarCollapseVer)
+export const NavBarCollapse = ({ children, isVertical = false, isVisible = false }: INavBarCollapse) => {
+    const [finalStyle, setFinalStyle] = useState<CSSProperties>(s.NavBarCollapseHor)
 
     useEffect(() => {
         let newStyle: CSSProperties =
@@ -69,7 +72,7 @@ interface INavBarNav extends ComponentPropsWithoutRef<'div'> {
 }
 
 export const NavBarNav = ({ children, isVertical = false }: INavBarNav) => {
-    const [finalStyle, setFinalStyle] = useState<CSSProperties>(s.NavBarNavVer)
+    const [finalStyle, setFinalStyle] = useState<CSSProperties>(s.NavBarNavHor)
     useEffect(() => {
         if (isVertical === true)
             setFinalStyle(s.NavBarNavVer)

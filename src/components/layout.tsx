@@ -5,7 +5,7 @@ interface ILayout extends ComponentPropsWithoutRef<'div'> { }
 
 const Layout = ({ children, ...rest }: ILayout) => {
     return (
-        <div {...rest}>
+        <div style={{ minHeight: '100.1vh' }} {...rest}>
             <Header />
             <main>
                 {children}
