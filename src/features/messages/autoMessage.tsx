@@ -1,7 +1,7 @@
 import React, { ComponentPropsWithoutRef, useEffect, useState } from "react";
-import { deleteMessage, Message } from "./messageSlice";
 import { useAppDispatch } from "../../context/store";
-import { Alert, Btn, Expander, Icon, KnownIcon, TimeoutBar } from "../../strong-strap";
+import { Expander, TimeoutBar } from "../../strong-strap";
+import { deleteMessage, Message } from "./messageSlice";
 
 interface IAutoMessage extends ComponentPropsWithoutRef<'div'> {
     message: Message
@@ -15,38 +15,44 @@ const AutoMessage = ({ message }: IAutoMessage) => {
         setIsExpanded(false)
         window.setTimeout(() => {
             dispatch(deleteMessage(message.id))
-        }, 200)
+        }, 1000)
     }
 
     useEffect(() => {
         if (!message) return
-        window.setTimeout(collapse, 5000)
+        if (message.displayTimeout > 0)
+            window.setTimeout(collapse, message.displayTimeout)
+        setIsExpanded(true)
     }, [message])
-
-    useEffect(() => {
-        window.setTimeout(() => { setIsExpanded(true) }, 50)
-    }, [])
 
     return (
         <Expander isExpanded={isExpanded}>
-            <Alert uiFunction={message.uiFunction}>
-                <div style={{ display: 'flex', alignItems: 'center' }}>
-                    <div style={{ minWidth: '150px', flexGrow: 1, marginRight: '10px' }}>{message.title}</div>
-                    <Btn type='button' onClick={() => { collapse() }} aria-label="Close" data-bs-dismiss="modal">
-                        <Icon knownIcon={KnownIcon.XSquare} fill='#777' width={'32px'} />
-                    </Btn>
-                </div>
+            <div className={'alert alert-' + message.uiFunction}>
                 {
-                    (message.details)
-                        ? <>
-                            <hr />
-                            <div>{message.details}</div>
-                            <hr />
-                        </>
+                    (message.title && message.title.length > 0)
+                        ? <div style={{ display: 'flex', alignItems: 'center' }}>
+                            <div style={{ minWidth: '150px', flexGrow: 1, marginRight: '10px' }}>{message.title}</div>
+                            <button type="button" onClick={() => { collapse() }} className="btn-close" data-bs-dismiss="alert" aria-label="Close" />
+                        </div>
                         : null
                 }
-                <TimeoutBar />
-            </Alert>
+                {
+                    (message.details && message.details.length > 0)
+                        ? <div>
+                            <hr />
+                            <div dangerouslySetInnerHTML={{ __html: message.details }}></div>
+                        </div>
+                        : null
+                }
+                {
+                    (message.displayTimeout > 0)
+                        ? <div>
+                            <hr />
+                            <TimeoutBar duration={message.displayTimeout} uiFunction={message.uiFunction} />
+                        </div>
+                        : null
+                }
+            </div>
         </Expander>
     )
 }

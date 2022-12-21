@@ -1,15 +1,14 @@
 import React from 'react'
 import Layout from '../../components/layout'
-import { Col, Container, Row } from '../../strong-strap'
 
 const PostsIndex = () => {
     return (
         <Layout>
-            <Container>
-                <Row>
-                    <Col><h1>Posts</h1></Col>
-                </Row>
-            </Container>
+            <div className='container'>
+                <div className='row'>
+                    <div className='col'><h1>Posts</h1></div>
+                </div>
+            </div>
         </Layout>
     )
 }

@@ -1,7 +1,6 @@
 import React, { useState } from 'react'
 import Layout from '../../components/layout'
-import { Btn, Carousel, Col, Container, Expander, Row } from '../../strong-strap'
-import * as s from '../../strong-strap/styles'
+import { Carousel, Expander } from '../../strong-strap'
 
 
 const MotionSamples = () => {
@@ -14,45 +13,45 @@ const MotionSamples = () => {
 
     return (
         <Layout>
-            <Container>
-                <Row>
-                    <Col><h1>Motion Tests</h1></Col>
-                </Row>
+            <div className='container'>
+                <div className='row'>
+                    <div className='col'><h1>Motion Tests</h1></div>
+                </div>
                 <br />
-                <Row>
-                    <Col>
+                <div className='row'>
+                    <div className='col'>
                         <Expander isExpanded={isExpanded}>
                             <Carousel aspectRatio='40%'>
                                 {
                                     imageUrls.map(m => {
                                         return (
-                                            <img style={s.AspectRatioItem} key={m} src={m} />
+                                            <img key={m} src={m} />
                                         )
                                     })
                                 }
                             </Carousel>
                         </Expander>
-                    </Col>
-                </Row>
+                    </div>
+                </div>
                 <br />
-                <Row>
-                    <Col>
-                        <Btn statedStyles={s.BtnSuccessStates} onClick={() => { setIsExpanded(!isExpanded) }}>Toggle Item</Btn>
-                    </Col>
-                </Row>
+                <div className='row'>
+                    <div className='col'>
+                        <button onClick={() => { setIsExpanded(!isExpanded) }}>Toggle Item</button>
+                    </div>
+                </div>
                 <br />
-                <Row>
-                    <Col>
+                <div className='row'>
+                    <div className='col'>
                         <div style={{ border: '1px solid red', padding: '50px' }}>Content Below</div>
-                    </Col>
-                </Row>
+                    </div>
+                </div>
                 <br />
-                <Row>
-                    <Col>
-                        <Btn statedStyles={s.BtnSuccessStates} onClick={() => { setIsExpanded(!isExpanded) }}>Toggle Item</Btn>
-                    </Col>
-                </Row>
-            </Container>
+                <div className='row'>
+                    <div className='col'>
+                        <button onClick={() => { setIsExpanded(!isExpanded) }}>Toggle Item</button>
+                    </div>
+                </div>
+            </div>
         </Layout >
     )
 }

@@ -1,8 +1,6 @@
 # strong-strap
 
-strong-strap is an NPM package which uses TS/TSX files for strongly typing most of the form components and Bootstrap based styling.
+**This is still a work in progress**
 
-Currently, strong-strap is a subset of an entire theme. As components are needed, they are added to the package.
+strong-strap uses TS/TSX files for strongly typing most of the form components based on Bootstrap. strong-strap also contains many helper functions wich are commonly used in a Gatsby/Redux static web app.
 
-## Customizations
-Two themes are included, a light and dark theme. To add your own, copy `strong-strap-light.css` and update the color variables.

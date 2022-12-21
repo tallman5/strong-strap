@@ -3,7 +3,7 @@ import React, { ComponentPropsWithoutRef, } from "react";
 import useMeasure from "react-use-measure";
 import { usePrevious } from "../utilities";
 
-interface IExpander extends ComponentPropsWithoutRef<'div'> {
+export interface IExpander extends ComponentPropsWithoutRef<'div'> {
     isExpanded?: boolean
 }
 

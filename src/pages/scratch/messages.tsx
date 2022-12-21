@@ -2,8 +2,7 @@ import React from "react";
 import Layout from "../../components/layout";
 import { addMessage, clearMessages, deleteMessage, Message } from "../../features/messages/messageSlice";
 import { useAppDispatch } from "../../context/store";
-import { Btn, Col, Container, Row, UiFunction } from "../../strong-strap";
-import * as s from '../../strong-strap/styles'
+import {  UiFunction } from "../../strong-strap";
 import AutoMessages from "../../features/messages/autoMessages";
 
 const MessagesPage = () => {
@@ -11,9 +10,9 @@ const MessagesPage = () => {
 
     const addClicked = () => {
         const msg: Message = {
-            uiFunction: UiFunction.Success,
+            uiFunction: UiFunction.Danger,
             details: "These are some longer details to show",
-            displayTimeout: 500,
+            displayTimeout: 5000,
             id: 0,
             title: "Success!"
         }
@@ -22,20 +21,20 @@ const MessagesPage = () => {
 
     return (
         <Layout>
-            <Container>
-                <Row>
-                    <Col><h1>Messages</h1></Col>
-                </Row>
+            <div className='container'>
+                <div className='row'>
+                    <div className='col'><h1>Messages</h1></div>
+                </div>
                 <br />
-                <Row>
-                    <Col>
+                <div className='row'>
+                    <div className='col'>
                         <h2>All Messages</h2>
-                        <Btn statedStyles={s.BtnSuccessStates} onClick={() => { addClicked() }}>Add</Btn><br /><br />
-                        <Btn statedStyles={s.BtnSuccessStates} onClick={() => { dispatch(deleteMessage(1)) }}>Delete #1</Btn><br /><br />
-                        <Btn statedStyles={s.BtnSuccessStates} onClick={() => { dispatch(clearMessages()) }}>Clear All</Btn><br /><br />
-                    </Col>
-                </Row>
-            </Container>
+                        <button className="btn btn-primary" onClick={() => { addClicked() }}>Add</button><br /><br />
+                        <button className="btn btn-danger" onClick={() => { dispatch(deleteMessage(1)) }}>Delete #1</button><br /><br />
+                        <button className="btn btn-warning" onClick={() => { dispatch(clearMessages()) }}>Clear All</button><br /><br />
+                    </div>
+                </div>
+            </div>
             <AutoMessages />
         </Layout>
     )

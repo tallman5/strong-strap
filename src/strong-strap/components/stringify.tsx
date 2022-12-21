@@ -1,6 +1,6 @@
 import React, { ComponentPropsWithoutRef } from "react"
 
-interface IStringify extends ComponentPropsWithoutRef<'pre'> {
+export interface IStringify extends ComponentPropsWithoutRef<'pre'> {
     o: any
 }
 

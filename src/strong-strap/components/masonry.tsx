@@ -1,10 +1,11 @@
 import React, { ComponentPropsWithoutRef, CSSProperties, ReactElement, useEffect, useState } from "react"
-import * as s from '../styles'
 import { useMasonryColumns } from "../utilities"
 
-interface IMasonry extends ComponentPropsWithoutRef<'div'> { }
+export interface IMasonry extends ComponentPropsWithoutRef<'div'> {
+    gap?: string
+}
 
-export const Masonry = ({ children }: IMasonry) => {
+export const Masonry = ({ children, gap = '10px' }: IMasonry) => {
     const columnCount = useMasonryColumns()
     const [columns, setColumns] = useState<ReactElement[]>([])
 
@@ -12,7 +13,6 @@ export const Masonry = ({ children }: IMasonry) => {
         const newCols: ReactElement[] = []
         const colWidth = (100 / columnCount) + '%'
         const colStyle: CSSProperties = {
-            ...s.MasonryCol,
             width: colWidth,
         }
 
@@ -23,7 +23,7 @@ export const Masonry = ({ children }: IMasonry) => {
                 const rows: ReactElement[] = [];
                 for (let j = i; j < childArray.length; j += columnCount) {
                     rows.push(
-                        <div key={j} style={s.MasonryBrick}>
+                        <div key={j} style={{ margin: gap + ' 0px' }}>
                             {childArray[j]}
                         </div>
                     )
@@ -38,7 +38,7 @@ export const Masonry = ({ children }: IMasonry) => {
     }, [children, columnCount])
 
     return (
-        <div style={s.Masonry}>
+        <div style={{ display: 'flex', justifyContent: 'space-between', gap }}>
             {columns}
         </div>
     )

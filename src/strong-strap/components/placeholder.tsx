@@ -1,7 +1,7 @@
 import React, { ComponentPropsWithoutRef, CSSProperties, useState } from "react"
 import { animated, config, useSpring } from '@react-spring/web'
 
-interface IPlaceholder extends ComponentPropsWithoutRef<'div'> {
+export interface IPlaceholder extends ComponentPropsWithoutRef<'div'> {
     isVisible?: boolean
 }
 

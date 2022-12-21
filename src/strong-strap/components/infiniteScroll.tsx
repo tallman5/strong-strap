@@ -1,6 +1,6 @@
 import React, { ComponentPropsWithoutRef, useEffect } from "react";
 
-interface IInfiniteScroll extends ComponentPropsWithoutRef<'div'> {
+export interface IInfiniteScroll extends ComponentPropsWithoutRef<'div'> {
     hitBottom: any
     padding?: number
 }

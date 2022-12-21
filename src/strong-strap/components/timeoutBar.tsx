@@ -1,14 +1,14 @@
 import { animated, easings, useSpring } from "@react-spring/web";
 import React, { ComponentPropsWithoutRef, CSSProperties, useEffect, useState } from "react";
-import * as s from '../styles'
+import { UiFunction } from "../utilities";
 
-interface ITimeoutBar extends ComponentPropsWithoutRef<'div'> {
-    background?: string,
+export interface ITimeoutBar extends ComponentPropsWithoutRef<'div'> {
+    uiFunction?: UiFunction,
     duration?: number,
     height?: string,
 }
 
-export const TimeoutBar = ({ background = 'rgb(25, 135, 84)', duration = 5000, height = '20px' }: ITimeoutBar) => {
+export const TimeoutBar = ({ duration = 5000, height = '10px', uiFunction = UiFunction.Success }: ITimeoutBar) => {
     const [isRunning, setIsRunning] = useState(false)
     const props = useSpring({
         width: isRunning ? `${100}%` : `0%`,
@@ -19,7 +19,6 @@ export const TimeoutBar = ({ background = 'rgb(25, 135, 84)', duration = 5000, h
     })
 
     const containerStyle: CSSProperties = {
-        ...s.Rounded,
         position: 'relative',
         width: '100%',
         height,
@@ -31,7 +30,7 @@ export const TimeoutBar = ({ background = 'rgb(25, 135, 84)', duration = 5000, h
         top: 0,
         left: 0,
         height: '100%',
-        background,
+        borderRadius: '10px'
     }
 
     useEffect(() => {
@@ -40,8 +39,8 @@ export const TimeoutBar = ({ background = 'rgb(25, 135, 84)', duration = 5000, h
 
     return (
         <div style={containerStyle}>
-            <div style={{ ...barStyle, width: '100%', opacity: '.3' }}></div>
-            <animated.div style={{ ...props, ...barStyle }}></animated.div>
+            <div style={{ ...barStyle, width: '100%', opacity: '.3' }} className={'text-bg-' + uiFunction}></div>
+            <animated.div style={{ ...props, ...barStyle }} className={'text-bg-' + uiFunction}></animated.div>
         </div>
     )
 }

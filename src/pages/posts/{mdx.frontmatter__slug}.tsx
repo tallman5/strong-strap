@@ -2,8 +2,6 @@ import * as React from 'react'
 import Layout from '../../components/layout'
 import { GatsbyImage, getImage } from 'gatsby-plugin-image'
 import { graphql } from "gatsby"
-import { Col, Container, Row } from '../../strong-strap'
-import * as s from '../../strong-strap/styles'
 
 const PostTemplate = ({ data, ...rest }: any) => {
 
@@ -19,21 +17,21 @@ const PostTemplate = ({ data, ...rest }: any) => {
       }
       <hr style={{ margin: 0 }} />
       <br />
-      <Container>
-        <Row>
-          <Col>
+      <div className='container'>
+        <div className='row'>
+          <div className='col'>
             <h1>{fm.title}</h1>
-            <div style={s.Lead}>{fm.description}</div>
+            <div className='lead'>{fm.description}</div>
             <span style={{ fontSize: 'smaller' }}><cite>Published {(new Date(fm.date)).toLocaleDateString()} by {fm.author}</cite></span>
-          </Col>
-        </Row>
+          </div>
+        </div>
         <br />
-        <Row>
-          <Col>
+        <div className='row'>
+          <div className='col'>
             {rest.children}
-          </Col>
-        </Row>
-      </Container>
+          </div>
+        </div>
+      </div>
     </Layout>
   )
 }

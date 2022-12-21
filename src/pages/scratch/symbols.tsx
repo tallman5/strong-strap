@@ -1,7 +1,6 @@
 import React, { useEffect, useState } from 'react'
 import Layout from '../../components/layout'
-import { Btn, Col, Container, FloatingTextBox, Row, Size } from '../../strong-strap'
-import * as s from '../../strong-strap/styles'
+import { FloatingTextbox } from '../../strong-strap'
 
 interface ISymbol {
     index: number
@@ -38,31 +37,31 @@ const SymbolsPage = () => {
 
     return (
         <Layout>
-            <Container>
-                <Row>
-                    <Col>
+            <div className='container'>
+                <div className='row'>
+                    <div className='col'>
                         <div style={{ display: 'flex', alignItems: 'center' }}>
-                            <FloatingTextBox type='number' label={'Jump to Page'} value={page.toString()} onChange={(e) => { setPage(parseInt(e.target.value)) }} />&nbsp;&nbsp;
-                            <Btn statedStyles={s.BtnSuccessStates} onClick={() => { changePage(-1) }}>Prev</Btn>&nbsp;&nbsp;
-                            <Btn statedStyles={s.BtnSuccessStates} onClick={() => { changePage(1) }}>Next</Btn>&nbsp;&nbsp;
+                            <FloatingTextbox type='number' caption={'Jump to Page'} value={page.toString()} onChange={(e) => { setPage(parseInt(e.target.value)) } } id={''} placeholder={'jump-to-page'} />&nbsp;&nbsp;
+                            <button  onClick={() => { changePage(-1) }}>Prev</button>&nbsp;&nbsp;
+                            <button  onClick={() => { changePage(1) }}>Next</button>&nbsp;&nbsp;
                             <span>{page * pageSize} - {((page * pageSize) + pageSize) - 1}</span>&nbsp;&nbsp;
                             <span style={{ fontSize: 'x-large' }}>&#127917;&#127902;&#127917;&nbsp;&nbsp;</span>
                         </div>
-                    </Col>
-                </Row>
-            </Container>
+                    </div>
+                </div>
+            </div>
             <br />
-            <Container size={Size.fluid}>
-                <Row>
-                    <Col>
+            <div className='container-fluid'>
+                <div className='row'>
+                    <div className='col'>
                         <div style={{ display: 'flex', flexWrap: 'wrap' }}>
                             {
                                 symbols.map(s => <Symbol key={s} index={s} />)
                             }
                         </div>
-                    </Col>
-                </Row>
-            </Container>
+                    </div>
+                </div>
+            </div>
         </Layout>
     )
 }

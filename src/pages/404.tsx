@@ -1,14 +1,13 @@
 import { Link } from "gatsby"
 import * as React from "react"
 import Layout from "../components/layout"
-import { Col, Container, Row } from "../strong-strap"
 
 const HomePage = () => {
   return (
     <Layout>
-      <Container>
-        <Row>
-          <Col>
+      <div className='container'>
+        <div className='row'>
+          <div className='col'>
             <h1>Page not found</h1>
             <p>
               Sorry 😔, we couldn't find what you were looking for.
@@ -27,9 +26,9 @@ const HomePage = () => {
               <br />
               <Link to="/">Go home</Link>.
             </p>
-          </Col>
-        </Row>
-      </Container>
+          </div>
+        </div>
+      </div>
     </Layout>
   )
 }

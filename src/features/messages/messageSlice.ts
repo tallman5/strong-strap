@@ -4,10 +4,10 @@ import { RootState } from "../../context/store"
 
 export type Message = {
     uiFunction: UiFunction
-    details: string
+    details?: string
     displayTimeout: number
     id: number
-    title: string
+    title?: string
 }
 
 export type MessagesState = {

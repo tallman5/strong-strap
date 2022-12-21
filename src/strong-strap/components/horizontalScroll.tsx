@@ -1,10 +1,14 @@
-import React, { ComponentPropsWithoutRef } from "react"
-import * as s from '../styles'
+import React, { ComponentPropsWithoutRef, CSSProperties } from "react";
 
-interface IHorizontalScroll extends ComponentPropsWithoutRef<'pre'> {}
+export interface IHorizontalScroll extends ComponentPropsWithoutRef<'div'> {
+    spacing?: string
+}
 
-export const HorizontalScroll = ({ children }: IHorizontalScroll) => {
+export const HorizontalScroll = ({ children, spacing = '8px', style, ...rest }: IHorizontalScroll) => {
+    const finalStyle: CSSProperties = {
+        ...style, display: "flex", overflowX: "auto", maxWidth: "100%", gap: spacing, padding: spacing
+    }
     return (
-        <div style={s.HorizontalScrollContainer}>{children}</div>
+        <div style={finalStyle} {...rest}>{children}</div>
     )
 }

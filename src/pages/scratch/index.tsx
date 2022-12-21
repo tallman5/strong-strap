@@ -1,39 +1,27 @@
 import { Link } from 'gatsby'
 import React from 'react'
 import Layout from '../../components/layout'
-import { Col, Container, Row } from '../../strong-strap'
 
 const ScratchIndex = () => {
     return (
         <Layout>
-            <Container>
-                <Row>
-                    <Col><h1>Scratch</h1></Col>
-                </Row>
-                <Row>
-                    <Col>
-                        <Link to='./carouselSample'>Carousel</Link>
-                    </Col>
-                    <Col>
-                        <Link to='./horizScroll'>Horizontal Scoll</Link>
-                    </Col>
-                    <Col>
-                        <Link to='./iconsSample'>Icons</Link>
-                    </Col>
-                    <Col>
-                        <Link to='./infiniteScroll'>Infinite Scroll</Link>
-                    </Col>
-                    <Col>
-                        <Link to='./messages'>Messages</Link>
-                    </Col>
-                    <Col>
-                        <Link to='./motions'>Motion</Link>
-                    </Col>
-                    <Col>
-                        <Link to='./symbols'>Symbols</Link>
-                    </Col>
-                </Row>
-            </Container>
+            <div className='container'>
+                <div className='row'>
+                    <div className='col'><h1>Scratch</h1></div>
+                </div>
+                <div className='row'>
+                    <div className='col'>
+                        <Link to='./carouselSample/'>Carousel</Link><br />
+                        <Link to='./horizScroll/'>Horizontal Scoll</Link><br />
+                        <Link to='./iconsSample/'>Icons</Link><br />
+                        <Link to='./infiniteScroll/'>Infinite Scroll</Link><br />
+                        <Link to='./messages/'>Messages</Link><br />
+                        <Link to='./motions/'>Motion</Link><br />
+                        <Link to='./symbols/'>Symbols</Link><br />
+                        <Link to='./walls/'>Walls</Link><br />
+                    </div>
+                </div>
+            </div>
         </Layout >
     )
 }

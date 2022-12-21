@@ -1,6 +1,6 @@
 import React, { useReducer } from 'react'
 import Layout from '../../components/layout'
-import { Col, Container, InfiniteScroll, Row } from '../../strong-strap'
+import { InfiniteScroll } from '../../strong-strap'
 
 type Action = {
     type: string
@@ -37,12 +37,12 @@ const InfiniteScrollSample = () => {
 
     return (
         <Layout>
-            <Container>
-                <Row>
-                    <Col><h1>Infinite Scroll Sample</h1></Col>
-                </Row>
-                <Row>
-                    <Col>
+            <div className='container'>
+                <div className='row'>
+                    <div className='col'><h1>Infinite Scroll Sample</h1></div>
+                </div>
+                <div className='row'>
+                    <div className='col'>
                         <InfiniteScroll hitBottom={loadMoreItems} padding={500}>
                             {
                                 state.map((i) => {
@@ -52,9 +52,9 @@ const InfiniteScrollSample = () => {
                                 })
                             }
                         </InfiniteScroll>
-                    </Col>
-                </Row>
-            </Container>
+                    </div>
+                </div>
+            </div>
         </Layout >
     )
 }

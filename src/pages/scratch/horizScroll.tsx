@@ -1,15 +1,15 @@
 import React from 'react'
 import Layout from '../../components/layout'
-import { Col, Container, HorizontalScroll, Icon, KnownIcon, Row } from '../../strong-strap'
+import { HorizontalScroll, Icon, KnownIcon } from '../../strong-strap'
 
 const HorizScroll = () => {
     return (
         <Layout>
-            <Container>
-                <Row>
-                    <Col><h1>Horizontal Scroll</h1></Col>
-                </Row>
-                <Row>
+            <div className='container'>
+                <div className='row'>
+                    <div className='col'><h1>Horizontal Scroll</h1></div>
+                </div>
+                <div className='row'>
                     <HorizontalScroll>
                         {
                             Object.keys(KnownIcon).filter(isNaN as any).map((is, index: number) => {
@@ -21,8 +21,8 @@ const HorizScroll = () => {
                             })
                         }
                     </HorizontalScroll>
-                </Row>
-            </Container>
+                </div>
+            </div>
         </Layout >
     )
 }

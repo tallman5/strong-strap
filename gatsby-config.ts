@@ -3,7 +3,7 @@ import type { GatsbyConfig } from "gatsby";
 const config: GatsbyConfig = {
   siteMetadata: {
     title: `Strong Strap Testing`,
-    siteUrl: `https://www.yourdomain.tld`
+    siteUrl: `http://localhost:8000`
   },
   graphqlTypegen: true,
   plugins: [
@@ -89,7 +89,6 @@ const config: GatsbyConfig = {
       }
     },
     "gatsby-plugin-offline",
-    "gatsby-plugin-sass",
   ]
 };
 

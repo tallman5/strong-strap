@@ -1,19 +1,27 @@
-import React, { CSSProperties, ReactNode, useEffect, useState } from "react";
-import * as s from '../styles'
-import { AspectRatioContainer } from "./aspectRatioContainer";
+import React, { CSSProperties, HTMLAttributes, ReactNode, useEffect, useState } from 'react'
 
-interface ICarousel {
+export interface ICarousel extends HTMLAttributes<HTMLDivElement> {
     aspectRatio?: string,
     children: ReactNode,
     duration?: number,
 }
 
-export const Carousel = ({ aspectRatio = '20%', children, duration = 5000 }: ICarousel) => {
+export const Carousel = ({ aspectRatio = '25%', children, duration = 5000 }: ICarousel) => {
     const [currentIndex, setIndex] = useState(0)
     const kids = children as []
 
+    const containerStyle: CSSProperties = {
+        paddingBottom: aspectRatio,
+        position: "relative",
+    }
+
     const itemStyle: CSSProperties = {
-        ...s.AspectRatioItem,
+        height: '100%',
+        left: 0,
+        objectFit: 'cover',
+        position: 'absolute',
+        top: 0,
+        width: '100%',
         transition: 'opacity 3.0s'
     }
 
@@ -25,17 +33,16 @@ export const Carousel = ({ aspectRatio = '20%', children, duration = 5000 }: ICa
     }, [])
 
     return (
-        <AspectRatioContainer aspectRatio={aspectRatio}>
+        <div style={containerStyle}>
             {
                 kids?.map((child, index: number) => {
                     return (
-                        <div key={index}
-                            style={{ ...itemStyle, opacity: (index === currentIndex) ? 1 : 0 }}>
+                        <div key={index} style={{ ...itemStyle, opacity: (index === currentIndex) ? 1 : 0 }}>
                             {child}
                         </div>
                     )
                 })
             }
-        </AspectRatioContainer>
+        </div>
     )
 }
