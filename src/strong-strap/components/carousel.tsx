@@ -6,6 +6,15 @@ export interface ICarousel extends HTMLAttributes<HTMLDivElement> {
     duration?: number,
 }
 
+export const ItemStyle: CSSProperties = {
+    height: '100%',
+    left: 0,
+    objectFit: 'cover',
+    position: 'absolute',
+    top: 0,
+    width: '100%',
+}
+
 export const Carousel = ({ aspectRatio = '25%', children, duration = 5000 }: ICarousel) => {
     const [currentIndex, setIndex] = useState(0)
     const kids = children as []
@@ -13,16 +22,6 @@ export const Carousel = ({ aspectRatio = '25%', children, duration = 5000 }: ICa
     const containerStyle: CSSProperties = {
         paddingBottom: aspectRatio,
         position: "relative",
-    }
-
-    const itemStyle: CSSProperties = {
-        height: '100%',
-        left: 0,
-        objectFit: 'cover',
-        position: 'absolute',
-        top: 0,
-        width: '100%',
-        transition: 'opacity 3.0s'
     }
 
     useEffect(() => {
@@ -37,7 +36,7 @@ export const Carousel = ({ aspectRatio = '25%', children, duration = 5000 }: ICa
             {
                 kids?.map((child, index: number) => {
                     return (
-                        <div key={index} style={{ ...itemStyle, opacity: (index === currentIndex) ? 1 : 0 }}>
+                        <div key={index} style={{ transition: 'opacity 3.0s', opacity: (index === currentIndex) ? 1 : 0 }}>
                             {child}
                         </div>
                     )

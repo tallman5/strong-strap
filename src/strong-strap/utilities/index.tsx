@@ -1,4 +1,4 @@
-import React, { useState, useEffect, CSSProperties, useRef } from 'react'
+import { useState, useEffect, CSSProperties, useRef } from 'react'
 
 export const copyToClipboard = (textToCopy: string) => {
     // navigator clipboard api needs a secure context (https)
@@ -98,29 +98,6 @@ export async function executeFetchAsync(url: string, data?: any, bearerToken?: s
     return result
 }
 
-export function getHeaderTags(hi: HeaderInfo) {
-    const returnValue =
-        <>
-            <title>{hi.title}</title>
-            <link rel="canonical" href={hi.baseUrl + hi.relativePageUrl} />
-            <meta name="description" content={hi.description} />
-            <meta name="image" content={hi.baseUrl + hi.relativeImageUrl} />
-
-            <meta property="og:url" content={hi.baseUrl + hi.relativePageUrl} />
-            <meta property="og:type" content={hi.type} />
-            <meta property="og:title" content={hi.title} />
-            <meta property="og:description" content={hi.description} />
-            <meta property="og:image" content={hi.baseUrl + hi.relativeImageUrl} />
-
-            <meta name="twitter:card" content="summary_large_image" />
-            <meta name="twitter:creator" content={hi.twitterName} />
-            <meta name="twitter:title" content={hi.title} />
-            <meta name="twitter:description" content={hi.description} />
-            <meta name="twitter:image" content={hi.baseUrl + hi.relativeImageUrl} />
-        </>
-    return returnValue
-}
-
 export function getQueryParam(key: string, defaultValue?: string) {
     if (!isBrowser) return defaultValue || ''
     const urlParams = new URLSearchParams(window.location.search)
@@ -178,17 +155,6 @@ export const getUniqueValues = (items: any[], prop: string, removeEmpties: boole
     if (removeEmpties === true)
         returnValue = returnValue.filter(i => (i && i.length > 0))
     return returnValue
-}
-
-export type HeaderInfo = {
-    baseUrl: string,
-    description: string,
-    imageAlt: string,
-    relativeImageUrl: string,
-    relativePageUrl: string,
-    title: string,
-    twitterName: string,
-    type: string,
 }
 
 export const isBrowser = typeof window !== "undefined" && window;

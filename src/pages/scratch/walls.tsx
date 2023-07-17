@@ -2,6 +2,7 @@ import { StaticImage } from "gatsby-plugin-image";
 import React, { useEffect, useState } from "react";
 import Layout from "../../components/layout";
 import { BrickWall, Masonry } from "../../strong-strap";
+const randomText = require('random-textblock');
 
 interface IItem {
     id: number
@@ -27,22 +28,19 @@ const Walls = () => {
                         <hr />
                     </div>
                 </div>
+
                 <div className="row">
                     <div className="col">
                         <h2>Brick Wall</h2>
-                    </div>
-                </div>
-                <div className="row">
-                    <div className="col">
-                        <BrickWall columnWidth={200}>
+                        <BrickWall>
                             {
                                 items.map((item: IItem) => {
                                     return (
                                         <div className="card" key={item.id} style={{ width: '200px', flexGrow: 1, flexShrink: 0 }}>
                                             <StaticImage src='../../images/testimg1.jpg' className="card-img-top" alt="..." />
                                             <div className="card-body">
-                                                <h5 className="card-title">Card title</h5>
-                                                <p className="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
+                                                <h5 className="card-title">{randomText.getTextBlock({ maxSentences: 1, maxWords: 3 })}</h5>
+                                                <p className="card-text">{randomText.getTextBlock()}</p>
                                             </div>
                                         </div>
                                     )
@@ -52,13 +50,10 @@ const Walls = () => {
                         <br />
                     </div>
                 </div>
+
                 <div className="row">
                     <div className="col">
                         <h2>Masonry Wall</h2>
-                    </div>
-                </div>
-                <div className="row">
-                    <div className="col">
                         <Masonry>
                             {
                                 items.map((item: IItem) => {
@@ -66,8 +61,8 @@ const Walls = () => {
                                         <div className="card" key={item.id}>
                                             <StaticImage src='../../images/testimg1.jpg' className="card-img-top" alt="..." />
                                             <div className="card-body">
-                                                <h5 className="card-title">Card title</h5>
-                                                <p className="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
+                                                <h5 className="card-title">{randomText.getTextBlock({ maxSentences: 1, maxWords: 3 })}</h5>
+                                                <p className="card-text">{randomText.getTextBlock()}</p>
                                             </div>
                                         </div>
                                     )

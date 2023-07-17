@@ -10,7 +10,7 @@ const MessagesPage = () => {
 
     const addClicked = () => {
         const msg: Message = {
-            uiFunction: UiFunction.Danger,
+            uiFunction: UiFunction.Success,
             details: "These are some longer details to show",
             displayTimeout: 5000,
             id: 0,
