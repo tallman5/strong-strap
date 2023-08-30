@@ -1,6 +1,6 @@
 {
   "name": "@tallman/strong-strap",
-  "version": "0.0.35",
+  "version": "0.1.0",
   "description": "Reusable s#!t frequently needed on web projects.",
   "main": "dist/index.js",
   "files": [
