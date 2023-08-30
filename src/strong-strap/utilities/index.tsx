@@ -98,6 +98,15 @@ export async function executeFetchAsync(url: string, data?: any, bearerToken?: s
     return result
 }
 
+export function executeFetchSync(url: string, data?: any, bearerToken?: string, method?: string) {
+    let result: any = null;
+    async function handlePromise() {
+        result = await executeFetchAsync(url, data, bearerToken, method);
+    }
+    handlePromise();
+    return result;
+}
+
 export function getQueryParam(key: string, defaultValue?: string) {
     if (!isBrowser) return defaultValue || ''
     const urlParams = new URLSearchParams(window.location.search)
