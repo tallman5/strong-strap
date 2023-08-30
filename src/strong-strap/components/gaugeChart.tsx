@@ -15,8 +15,8 @@ const GaugeChart: React.FC<GaugeChartProps> = ({
     const [scriptLoaded, setScriptLoaded] = useState(false);
     const [google, setGoogle] = useState<Google>();
     const [googleChartsLoaded, setGoogleChartsLoaded] = useState(false);
-    const [chartData, setChartData] = useState();
-    const [chart, setChart] = useState();
+    const [chartData, setChartData] = useState<DataTable>();
+    const [chart, setChart] = useState<GoogleChart>();
 
     useEffect(() => {
         if (!isBrowser) return;
