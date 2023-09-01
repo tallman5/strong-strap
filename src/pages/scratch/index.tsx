@@ -24,6 +24,7 @@ const ScratchIndex = ({ data }: PageProps<Queries.ScratchIndexQuery>) => {
         </div>
         <div className='row'>
           <div className='col'>
+            <Link to='./azureMap/'>Azure Maps</Link><br />
             <Link to='./carouselSample/'>Carousel</Link><br />
             <Link to='./gaugeSamples/'>Gauges</Link><br />
             <Link to='./horizScroll/'>Horizontal Scoll</Link><br />

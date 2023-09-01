@@ -1,3 +1,11 @@
+interface Map {
+
+}
+
+interface Atlas {
+    Map: Map;
+}
+
 interface DataTable {
     setCell(row: number, column: number, value: any): void;
 }
@@ -12,5 +20,6 @@ interface GoogleChart {
 }
 
 interface Window {
-    google: Google; // Adjust the type accordingly based on the structure of the 'google' object
+    atlas: Atlas;
+    google: Google;
 }

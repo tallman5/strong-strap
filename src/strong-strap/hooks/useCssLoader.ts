@@ -1,21 +1,21 @@
 import { useEffect, useState } from 'react';
 
-function useScriptLoader(url: string) {
+function useCssLoader(url: string) {
     const [isLoaded, setIsLoaded] = useState(false);
 
     useEffect(() => {
         if (isLoaded) return;
 
-        let newElement = document.querySelector('script[src="' + url + '"]') as HTMLScriptElement;
+        let newElement = document.querySelector('link[href="' + url + '"]') as HTMLLinkElement;
         if (newElement) {
             setIsLoaded(true);
             return;
         }
 
         // Create a new script element
-        newElement = document.createElement('script');
-        newElement.src = url;
-        newElement.async = true;
+        newElement = document.createElement('link');
+        newElement.rel = 'stylesheet';
+        newElement.href = url;
 
         // Define a function to handle script load
         const handleLoad = () => {
@@ -32,7 +32,7 @@ function useScriptLoader(url: string) {
         newElement.addEventListener('error', handleError);
 
         // Append the script element to the document's body
-        document.body.appendChild(newElement);
+        document.head.appendChild(newElement);
 
         // Clean up event listeners when the component unmounts
         return () => {
@@ -45,4 +45,4 @@ function useScriptLoader(url: string) {
     return isLoaded;
 }
 
-export default useScriptLoader;
+export default useCssLoader;
